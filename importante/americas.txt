@@ -72,7 +72,7 @@ subir facturas unir
 /////////////////////////////////////////
 Angel torres
 
-
+7776 p
 ////////////////////////////////////////
 sai carmen rodolfo
 4765
@@ -108,7 +108,7 @@ resonador 1370							pp_id 274125
 
 sensor apert cofre 230      pp_id 274124
 
-
+refacciones6@zmotors.com.mx
 
 2 receptores cde 172
 
@@ -117,6 +117,68 @@ deflector aire 220					ppd_id 274122
 
 
 ///////////////////////////////////////
+Rodolfo
+Ot 7752  7776
+
+
+prov qv peregrina es 370
+				
 
 
 
+
+//////////////////////////////////////
+
+
+
+
+usuario_id	empresa_id	usuario_admin	usuario_soporte	usuario_razon_social	usuario_ingreso	usuario_nick	usuario_cp	usuario_calle	usuario_colonia	usuario_municipio	usuario_estado	usuario_telefono	usuario_telegram_id	usuario_correo_alterno	usuario_tipo	usuario_clave	usuario_nombre	usuario_apellidos	mail_pendiente	fecha_password	validacion	fecha_validacion	fecha_baja	activo	usuario_instancia	usuario_rfc	ayuda_mi_cuenta	ayuda_info_producto	ayuda_consulta_cotizacion	ayuda_consulta_solicitud	ayuda_configuracion	ayuda_reporte_mis_intereses
+1	1	1	1	QXFqbm1BbG1UU2ZOTzBNT0hwNDNJYXY4OGZsRjd3eEJvOEFCb29XeUMrQT0=	QitZQU1MQ2hSU2oxQkJBc0ozcFNTS2djVXpRWmo3cmFJSllER3VCd2JYaz0=	Mariana	56530	clpZaHk0MnJnK2J6a3JPbXNOeXM2UT09	K3lKMU1jZnhKU2pBcGUzQXZscHRoNXlZSnhQbmkrWktpOVFKeEp5amJWdz0=	M1BSY3pmaWVJdmRzSjI4aHVyQWYxdz09	Q0crbU5pb2ZQVGxqZm5KM21NYzF0UT09	Qi96OENPSUtSR1kyVEV4Z3FyQWh0QT09	
+QitZQU1MQ2hSU2oxQkJBc0ozcFNTS2djVXpRWmo3cmFJSllER3VCd2JYaz0=	1	97f37fe482186db9a82a8e61ad132e20	KzRycDlmUUNIMVhvbXZ3dnZIOFV2QT09	QTIvWlVMb1U2MityMDJaY1ZWK3Nndz09	ai9XR1l1S1UycjZ6M3JQRVNFVVdydy9udHpYWStINzRuTXNUMXlhY0N0Yz0=	2020-10-19 16:39:26	
+2018-08-30 19:10:57	
+1	
+
+1	1	1	1	1	1
+
+
+
+
+////////////////////////////////////
+
+2023
+3004
+
+
+
+//////////////////////////////////////
+
+Irine Sacarias 993 351 1065
+
+gobierno seg publica.
+
+top-da
+recibo electronico de pago (monto no coincide)
+	al seleccionar las facturas el moonto concide, pero al seguir da error de que no se puede
+	agustin dijo reducir periodo
+	agosto y noviembre 
+
+
+
+
+///////////////////////////////////////
+gaby facturacion resedal 221 571 5499
+factura xml descuento en fraccion y salir en cero
+ot 15575
+
+
+//////////////////////////////////////
+rodolfo 	cargus	ot 3529
+
+ok
+
+////////////////////////////////////
+kater ot 15891 frida
+OK
+
+
+////////////////////////////////////

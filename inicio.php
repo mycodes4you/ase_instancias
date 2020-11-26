@@ -16,11 +16,11 @@ $hora_actual = strftime("%A, %e $de %B $de %Y %R");
 $today = getdate();
 $hora=$today["hours"];
 if ($hora<12) {
-	$saludo = '<i class="fas fa-sun fa-lg" style="color: #ffef00; text-shadow: 0 0 5px #000;"></i> Buenos días bienvenid@ a KUMO';
+	$saludo = '<i class="fas fa-sun fa-lg" style="color: #ffef00; text-shadow: 0 0 5px #000;"></i> Buenos días bienvenid@ a Instancias Autoshop-Easy by KUMO';
 }elseif($hora<19){
-	$saludo = '<i class="fas fa-cloud-sun fa-lg" style="color: #faff50; text-shadow: 0 0 5px #000;"></i> Buenas tardes bienvenid@ a KUMO';
+	$saludo = '<i class="fas fa-cloud-sun fa-lg" style="color: #faff50; text-shadow: 0 0 5px #000;"></i> Buenas tardes bienvenid@ a Instancias Autoshop-Easy by KUMO';
 }else{ 
-	$saludo = '<i class="fas fa-moon fa-lg" style="color: blue; text-shadow: 0 0 5px #000;"></i> Buenas Noches bienvenid@ a KUMO'; 
+	$saludo = '<i class="fas fa-moon fa-lg" style="color: blue; text-shadow: 0 0 5px #000;"></i> Buenas Noches bienvenid@ a Instancias Autoshop-Easy by KUMO'; 
 }
 
 
