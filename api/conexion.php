@@ -1,7 +1,7 @@
 <?php
 
 //error_reporting(0);
-$conexion = new mysqli('mycodes4you.com', 'kumo_user', 'Pv0@zr04', 'admin_kumo');
+$conexion = new mysqli('mycodes4you.com', 'ins_usr123', 'Pv0@zr04-0L@37mxl', 'ase_instancias');
 //$conexion = new mysqli('localhost','aeropuerto','Myx9ln.23','aisl_documentos');
 $tildes = $conexion->query("SET NAMES 'utf8'");
 
