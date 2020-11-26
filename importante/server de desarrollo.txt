@@ -1,0 +1,42 @@
+SERVER VAICOP 
+
+WEBMIN: https://vaicop.noip.me:10000
+
+USUARIO: juancarlos
+PASSWORD: Pa$$w0rd1234
+
+
+ip. server desarrollo 192.168.1.64
+
+usuario: charly
+contraseña: Charly.01
+
+usuario: autoshop-easy
+contraseña: Kla6xesep
+
+control de tickets:
+
+https://controldeservicio.com/scp
+
+usuario: charlie
+contraseña: Pa$$w0rd1234
+
+
+SERVER JUPITER
+
+IP: 192.168.1.21
+USUARIO: charlie
+PASSWORD: Pa$$w0rd1234
+
+
+SUB SERVER:
+
+QUIÉN VENDE
+USUARIO:	AURORA
+CONTRASEÑA:     Myx9ln.2
+
+BASE DE DATOS:  J9xrw4pl
+USUARIO BD:     Gh691yo
+CONTRASEÑA:     6tb1f1Ocsh
+
+

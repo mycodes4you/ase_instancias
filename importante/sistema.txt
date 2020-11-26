@@ -1,0 +1,68 @@
+
+Cotización de:
+
+Sistema de Inventario y venta con:
+
+	*control de ventas
+	*inventarios
+	*cortes de caja 
+
+caracteristicas:
+
+	Productos: 
+
+		Gestión de los productos que se manejarán en tienda, agregar imágenes, descripción, precio de   		entrada, de salida y el mínimo de inventario que sirve para que ver alertas cuando tu inventario 			este bajo.
+
+		También podrá organizar los productos por categorías y podrán activar y desactivar los 			productos.		
+
+	Ventas:
+
+		En la sección de ventas se buscan los productos, se añaden cantidades y se procesan las ventas.
+
+		Podrán ingresar el efectivo recibido y obtener una alerta con el cambio que le devolveran al 			cliente, también podrán ver las ventas, asignarlas a un cliente e imprimirla.
+
+	Inventario:
+
+		En el inventario puedrá ver la disponibilidad de sus productos, dar de alta o ver el historial, 		también podrá descargar un archivo word con toda la información del inventario.
+
+	Cortes de Caja:
+
+		Administrará las  ventas en un modulo de cortes de caja que podrá abrir y cerrar en el momento que 			lo necesite y asi registrar las operaciones que se efectuen durante el turno de tus cajeros.
+
+		Podrá exportar en formato word los datos referentes a los cortes de caja.
+
+	control de Usuarios:
+
+		Controlará el acceso al sistema mediante el sistema de usuarios, con 2 niveles, 1 para 	               administradores y otro para usuarios normales, también podrá activar y desactivar los usuarios 			cuando quiera o no que accedan al sistema.
+
+	Reportes en Word:
+
+		Podrá descargar versiones imprimibles de la lista de productos , inventario, ventas y 			alertas de inventario.
+
+Implementación:
+
+
+	El sistema de instalará en un host en la nube (internet), por lo que será accesible desde cualquier lugar.
+
+	El sistema tendrá la caracteristica de ser responsivo, esto quiere decir que se podrá revisar desde un 		smartphone, tablet o pc de escritorio.
+
+
+(OBSERVACIONES): 
+
+	
+	El sistema quederá abierto para implementar posibles funciones como pueden ser, control de clienes y 		proveedores, etc.
+
+
+costo:  $ 7000
+
+	Incluye: 
+
+		* Desarrollo del sistema
+		* Instalación es host 
+		* Capacitación de uso
+
+		
+
+http://evilnapsis.com/2015/07/11/inventio-lite-sistema-de-inventario-y-ventas/
+
+

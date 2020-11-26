@@ -1,0 +1,122 @@
+americas
+
+
+ot 3925 
+
+
+3922
+
+420401310122135
+
+
+
+
+
+
+
+
+
+
+5510100229
+Ana salvador kater automotriz 
+
+
+
+sms
+
+ot 90935
+
+
+
+Karina
+5521917495
+
+
+UPDATE `b64_instancias` SET `img_instancia` = 'https://alpha.autoshop-easy.com/particular/logo-agencia.png' WHERE `b64_instancias`.`id_instancia` = 134;
+
+
+
+Kater 
+OT 15633
+
+
+Sarsan satelite
+OT 225
+BRENDA PEREZ
+
+
+3864 PAINT XPLOSION
+
+Mensaje: CFDI33131 - La clave del campo RegimenFiscal debe corresponder con el tipo de persona (fisica o moral).
+XML de respuesta timbrado no valido
+
+
+
+/////////////////////////////////////////
+sai center americas
+runsa refacturo noviembre
+levantar orden de compra
+OT 3239
+Angel torres rojas 5532213658
+
+
+/////////////////////////////////////////
+Quien vende
+Jose carlos gallejos 2222621124
+bolsas de aire s puebla
+3851 13017
+3851 13008
+subir facturas unir
+
+
+/////////////////////////////////////////
+Angel torres
+
+
+////////////////////////////////////////
+sai carmen rodolfo
+4765
+
+----h performance
+Aagregue columna op_pedir_libre en hperf_orden_productos
+
+
+Puntas de escape x Sistema de Escape
+Instalacion Negro Gloss x PPF
+Ahumado de faros x Ahumado
+Parrillas deportivas x Aerodinamica
+
+wrap solo 
+
+
+//////pedir libre
+https://sanantonio.autoshop-easy.com/ordenes.php?accion=consultar&orden_id=1547
+
+
+
+
+vcar 7301 - 801 pedir libre
+
+///////////////////////////////////////
+
+
+//////// peñuelas
+7752
+
+
+resonador 1370							pp_id 274125
+
+sensor apert cofre 230      pp_id 274124
+
+
+
+2 receptores cde 172
+
+deflector aire 220					ppd_id 274122
+
+
+
+///////////////////////////////////////
+
+
+

@@ -1,0 +1,75 @@
+******************USUARIOS************************
+
+IP'S NUEVO SERVIDOR CLOUD MAGNA: AT&T(189.203.240.17) TELMEX(189.240.248.11)
+USUARIO: charlie
+PASSWORD: vaicop01
+
+ACCESSO A SERVERS PRODUCTIVOS:
+		
+		LA CONEXXIÓN SSH SE REALIZA POR EL PUERTO 2922		
+		
+		SERVER CODERO: autoshopmgr.com
+		SERVER OVH   : carshopmgr.com
+
+		CODERO Y OVH  
+
+			USER: charlie
+			PASS: Ght5rm23Dmw2lzkr
+
+			USER: autoshop
+			PASS: Myx9ln.2
+
+			USER: carshopmgr
+			PASS: Myx9ln.2
+
+ACCSESO A DIRECTORIOS "controldb" EN AMBOS SERVERS:
+			
+			dominio: autoshopmgr.com (codero)
+			dominio: carshopmgr.com  (ovh)
+			USER: autoshop
+			PASS: Fum2a-cgt
+
+
+ACCESO A DOCUMENTO TECNICO y phpmyadmin en server productivos
+
+
+			USER: autoshop
+			PASS: 6tb1f1Oc
+
+ACCESO AL BLOG DE blog.vaicop.noip.me
+
+	usuario: 	vaicop701
+	password:	Y0yo-31
+
+Acceso de administrador de Blog
+
+	usuario:	charlie
+	Password:	Myx9ln.2
+
+
+-------- SERVIDOR CLOUD MAGNA --------
+
+
+Password mysql: Kla6xesep
+ 
+
+-------- USUARIO DE LINODE -----------
+
+USUARIO: vaicop07
+contraseña: Myx9ln.2Rhz4rvp-1
+
+
+-------- USUARIO DE NOIP.ME --------
+
+USUARIO: vaicop
+contraseña: Myx9ln.2Rhz4rvp-1
+
+
+-------- FACTURACIÓN (SMARTER WEB) --------
+
+USUARIO: facturacion@controldeservicio.com
+CONTRASEÑA: Dup.t8xmKla6xesep
+
+
+
+
