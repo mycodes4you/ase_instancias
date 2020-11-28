@@ -167,8 +167,13 @@ recibo electronico de pago (monto no coincide)
 
 ///////////////////////////////////////
 gaby facturacion resedal 221 571 5499
+												 221 561 5499
+
+
 factura xml descuento en fraccion y salir en cero
-ot 15575
+ot 15565
+
+ok
 
 
 //////////////////////////////////////
@@ -182,3 +187,23 @@ OK
 
 
 ////////////////////////////////////
+
+contador de Sai Center Alfonso
+
+Portal quien vende se bloquee apartir del 2 de diciembre a las 12 o 1 del 2 ya no se puedan subir facturas
+
+mensaje (el dia autorizadfo es hasta el 5 de enero).
+
+///////////////////////////////////
+
+Maria teresa altamirano
+	222 384 0078
+sai mirador
+OT - 24411
+
+sub 24308  -136.50
+
+rodolfo marca
+
+//////////////////////////////////
+

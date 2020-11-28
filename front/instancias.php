@@ -17,7 +17,7 @@ include('parciales/titulo.php');
       <div class="alert alert-danger alert-dismissible" v-if="errorMessage">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="icon fas fa-ban"></i> Error!</h5>
-        {errorMessage}}
+        {{errorMessage}}
       </div>
 
       <div class="card">
@@ -32,62 +32,51 @@ include('parciales/titulo.php');
             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
               <i class="fas fa-times"></i>
             </button>-->
+            
           </div>
         </div>
         <div class="card-body">
           
           <div class="card-body p-0">
-            <a class="btn btn-app" href="inicio.php?accion=instancias" style="background-color: grey; color: white;">
-              <span class="badge bg-danger">{{num_ins}}</span>
-              <i class="fas fa-building"></i> Total
-            </a>
-          
-            <a class="btn btn-app bg-success" href="inicio.php?accion=instancias_activas">
-              <span class="badge bg-danger">{{num_ins_on}}</span>
-              <i class="fas fa-toggle-on"></i> Activas
-            </a>
+            <div class="btn-group">
+              <button class="btn btn-app" style="background-color: grey; color: white;" @click="cargarInstancias();">
+                <big><b>{{num_ins}}</b></big><br> Total
+              </button>
+            
+              <button class="btn btn-app bg-success" @click="ins_activas();">
+                <big><b>{{num_ins_on}}</b></big><br> Activas
+              </button>
 
-            <a class="btn btn-app bg-danger" href="inicio.php?accion=instancias_inactivas">
-              <span class="badge bg-warning">{{num_ins_off}}</span>
-              <i class="fas fa-toggle-off"></i> Inactivas
-            </a>
+              <button class="btn btn-app bg-danger" @click="ins_inactivas();">
+                <big><b>{{num_ins_off}}</b></big><br> Inactivas
+              </button>
 
-            <a class="btn btn-app" href="inicio.php?accion=instancias_codero" style="background-color: #00f4ff; color: grey;">
-              <span class="badge bg-danger">{{num_ins_codero}}</span>
-              <i class="fas fa-server"></i> Codero
-            </a>
+              <button class="btn btn-app" style="background-color: #00f4ff; color: grey;" @click="ins_codero();">
+                <big><b>{{num_ins_codero}}</b></big><br> Codero
+              </button>
 
-            <a class="btn btn-app bg-warning" href="inicio.php?accion=instancias_ovh">
-              <span class="badge bg-danger">{{num_ins_ovh}}</span>
-              <i class="fas fa-server"></i> OVH
-            </a>
+              <button class="btn btn-app bg-warning" @click="ins_ovh();">
+                <big><b>{{num_ins_ovh}}</b></big><br> OVH
+              </button>
 
-            <a class="btn btn-app" href="inicio.php?accion=instancias_jupiter" style="background-color: #6610f2; color: white;">
-              <span class="badge bg-danger">{{num_ins_jup}}</span>
-              <i class="fas fa-server"></i> Jupiter
-            </a>
+              <button class="btn btn-app" style="background-color: #6610f2; color: white;" @click="ins_jupiter();">
+                <big><b>{{num_ins_jup}}</b></big><br> Jupiter
+              </button><br>
+              
+            </div>
+            <div class="form-group">
+                <label for="instancia_nombre">Buscar Instancia</label>          
+                <input type="text" class="form-control" placeholder="Buscar Instancia" v-on:keyup="searchMonitor" v-model="search.keyword">
+              </div>
           </div>
 
         </div>
       </div>
 
-
-
-
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Listado de Instancias</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <!-- 
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>-->
-          </div>
         </div>
         <div class="card-body">
           <div class="card-body p-0">
@@ -104,6 +93,9 @@ include('parciales/titulo.php');
                     </tr>
                   </thead>
                   <tbody>
+                    <tr v-if="noMember">
+                            <td colspan="2" align="center">Ningún miembro coincide con su búsqueda</td>
+                        </tr>
                     <tr v-for="instancia of listado_instancias">
                       <td>{{instancia.instancia_id}}</td>
                       <td>
@@ -126,24 +118,24 @@ include('parciales/titulo.php');
                         {{instancia.instancia_ssl}}
                       </td>
                       <td>
-                        <div v-if="instancia.instancia_servidor == '0'">
+                        <div v-if="instancia.instancia_servidor == 'Apagado'">
                           <span class="badge" style="background-color: grey; color: white;">
-                            Apagado
+                            {{instancia.instancia_servidor}}
                           </span>
                         </div>
-                        <div v-else-if="instancia.instancia_servidor == '2'">
+                        <div v-else-if="instancia.instancia_servidor == 'OVH'">
                           <span class="badge bg-warning">
-                            <a href="https://carshopmgr.com/controldb/" target="_blank" style="color: black;">OVH</a>
+                            <a href="https://carshopmgr.com/controldb/" target="_blank" style="color: black;">{{instancia.instancia_servidor}}</a>
                           </span>
                         </div>
-                        <div v-else-if="instancia.instancia_servidor == '1'">
+                        <div v-else-if="instancia.instancia_servidor == 'Codero'">
                           <span class="badge" style="background-color: #00f4ff; color: grey;">
-                            <a href="https://autoshopmgr.com/controldb/" target="_blank" style="color: grey;">Codero</a>
+                            <a href="https://autoshopmgr.com/controldb/" target="_blank" style="color: grey;">{{instancia.instancia_servidor}}</a>
                           </span>
                         </div>
-                        <div v-else-if="instancia.instancia_servidor == '3'">
+                        <div v-else-if="instancia.instancia_servidor == 'Jupiter'">
                           <span class="badge" style="background-color: #6610f2; color: white;">
-                            <a href="https://jup2.carshopmgr.com/controldb/" target="_blank" style="color: white;">Jupiter</a>
+                            <a href="https://jup2.carshopmgr.com/controldb/" target="_blank" style="color: white;">{{instancia.instancia_servidor}}</a>
                           </span>
                         </div>
                       </td>
@@ -194,40 +186,40 @@ include('parciales/titulo.php');
                 <input type="hidden" class="form-control" id="instancia_id" v-model="clickedInstancia.instancia_id">
               </div>
               <!-- select dependiendo el actual -->
-              <div class="form-group" v-if="clickedInstancia.instancia_servidor == '0'">
+              <div class="form-group" v-if="clickedInstancia.instancia_servidor == 'Apagado'">
                 <label>Servidor</label>
                 <select class="form-control" id="instancia_servidor" v-model="clickedInstancia.instancia_servidor">
-                  <option selected value="0">Apagado</option>
-                  <option value="2">OVH</option>
-                  <option value="1">Codero</option>
-                  <option value="3">Jupiter</option>
+                  <option selected value="Apagado">Apagado</option>
+                  <option value="OVH">OVH</option>
+                  <option value="Codero">Codero</option>
+                  <option value="Jupiter">Jupiter</option>
                 </select>
               </div>
-              <div class="form-group" v-else-if="clickedInstancia.instancia_servidor =='2'">
+              <div class="form-group" v-else-if="clickedInstancia.instancia_servidor =='OVH'">
                 <label>Servidor</label>
                 <select class="form-control" id="instancia_servidor" v-model="clickedInstancia.instancia_servidor">
-                  <option selected value="2">OVH</option>
-                  <option value="0">Apagado</option>
-                  <option value="1">Codero</option>
-                  <option value="3">Jupiter</option>
+                  <option selected value="OVH">OVH</option>
+                  <option value="Apagado">Apagado</option>
+                  <option value="Codero">Codero</option>
+                  <option value="Jupiter">Jupiter</option>
                 </select>
               </div>
-              <div class="form-group" v-else-if="clickedInstancia.instancia_servidor =='1'">
+              <div class="form-group" v-else-if="clickedInstancia.instancia_servidor =='Codero'">
                 <label>Servidor</label>
                 <select class="form-control" id="instancia_servidor" v-model="clickedInstancia.instancia_servidor">
-                  <option selected value="1">Codero</option>
-                  <option value="0">Apagado</option>
-                  <option value="2">OVH</option>
-                  <option>Jupiter</option>
+                  <option selected value="Codero">Codero</option>
+                  <option value="Apagado">Apagado</option>
+                  <option value="OVH">OVH</option>
+                  <option value="Jupiter">Jupiter</option>
                 </select>
               </div>
-              <div class="form-group" v-else-if="clickedInstancia.instancia_servidor =='3'">
+              <div class="form-group" v-else-if="clickedInstancia.instancia_servidor =='Jupiter'">
                 <label>Servidor</label>
                 <select class="form-control" id="instancia_servidor" v-model="clickedInstancia.instancia_servidor">
-                  <option selected value="3">Jupiter</option>
-                  <option value="0">Apagado</option>
-                  <option value="2">OVH</option>
-                  <option value="1">Codero</option>
+                  <option selected value="Jupiter">Jupiter</option>
+                  <option value="Apagado">Apagado</option>
+                  <option value="OVH">OVH</option>
+                  <option value="Codero">Codero</option>
                 </select>
               </div>
               <!-- FIN select dependiendo el actual -->
@@ -280,6 +272,8 @@ include('parciales/titulo.php');
     el: "#app",
     data: {
       date: "",
+      search: {keyword: ''},
+      noMember: false,
       errorMessage: "",
       successMessage: "",
       listado_instancias: [],
@@ -314,6 +308,7 @@ include('parciales/titulo.php');
     mounted: function () {
       console.log("Vue.js esta corriendo...");
       console.log(moment().format('LLLL'));
+      //this.cargarInstancias();
       this.cargarInstancias();
     },
 
@@ -321,8 +316,139 @@ include('parciales/titulo.php');
       moment: function () {
       return moment();
       },      
+
+      ins_activas: function(){
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=activas')
+                .then(function(response){
+                  console.log(response);
+                    if (response.data.error) {
+            app.errorMessage = response.data.message;
+            console.log(response.data.message);
+          } else {
+            app.listado_instancias = response.data.listado_instancias;
+            app.num_ins_on = response.data.num_ins_on;
+            app.num_ins = response.data.num_ins;
+            app.num_ins_off = response.data.num_ins_off;
+            app.num_ins_ovh = response.data.num_ins_ovh;
+            app.num_ins_codero = response.data.num_ins_codero;
+            app.num_ins_jup = response.data.num_ins_jup;
+            console.log(response.data.listado_instancias);
+          }
+                });
+        },
+        ins_codero: function(){
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=codero')
+                .then(function(response){
+                  console.log(response);
+                    if (response.data.error) {
+            app.errorMessage = response.data.message;
+            console.log(response.data.message);
+          } else {
+            app.listado_instancias = response.data.listado_instancias;
+            app.num_ins_on = response.data.num_ins_on;
+            app.num_ins = response.data.num_ins;
+            app.num_ins_off = response.data.num_ins_off;
+            app.num_ins_ovh = response.data.num_ins_ovh;
+            app.num_ins_codero = response.data.num_ins_codero;
+            app.num_ins_jup = response.data.num_ins_jup;
+            console.log(response.data.listado_instancias);
+          }
+                });
+        },
+        ins_ovh: function(){
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=ovh')
+                .then(function(response){
+                  console.log(response);
+                    if (response.data.error) {
+            app.errorMessage = response.data.message;
+            console.log(response.data.message);
+          } else {
+            app.listado_instancias = response.data.listado_instancias;
+            app.num_ins_on = response.data.num_ins_on;
+            app.num_ins = response.data.num_ins;
+            app.num_ins_off = response.data.num_ins_off;
+            app.num_ins_ovh = response.data.num_ins_ovh;
+            app.num_ins_codero = response.data.num_ins_codero;
+            app.num_ins_jup = response.data.num_ins_jup;
+            console.log(response.data.listado_instancias);
+          }
+                });
+        },
+        ins_jupiter: function(){
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=jupiter')
+                .then(function(response){
+                  console.log(response);
+                    if (response.data.error) {
+            app.errorMessage = response.data.message;
+            console.log(response.data.message);
+          } else {
+            app.listado_instancias = response.data.listado_instancias;
+            app.num_ins_on = response.data.num_ins_on;
+            app.num_ins = response.data.num_ins;
+            app.num_ins_off = response.data.num_ins_off;
+            app.num_ins_ovh = response.data.num_ins_ovh;
+            app.num_ins_codero = response.data.num_ins_codero;
+            app.num_ins_jup = response.data.num_ins_jup;
+            console.log(response.data.listado_instancias);
+          }
+                });
+        },
+        ins_inactivas: function(){
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=inactivas')
+                .then(function(response){
+                  console.log(response);
+                    if (response.data.error) {
+            app.errorMessage = response.data.message;
+            console.log(response.data.message);
+          } else {
+            app.listado_instancias = response.data.listado_instancias;
+            app.num_ins_on = response.data.num_ins_on;
+            app.num_ins = response.data.num_ins;
+            app.num_ins_off = response.data.num_ins_off;
+            app.num_ins_ovh = response.data.num_ins_ovh;
+            app.num_ins_codero = response.data.num_ins_codero;
+            app.num_ins_jup = response.data.num_ins_jup;
+            console.log(response.data.listado_instancias);
+          }
+                });
+        },
+        searchMonitor: function() {
+            var keyword = app.toFormData(app.search);
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=buscar', keyword)
+                .then(function(response){
+                    app.listado_instancias = response.data.listado_instancias;
+                    console.log(response);
+                    if(response.data.listado_instancias == ''){
+                        app.noMember = true;
+                    }
+                    else{
+                        app.noMember = false;
+                    }
+                });
+        },
+  
+        cargarInstancias: function(){
+            axios.post('<?= $axios_url ?>api/instancias_api.php?accion=mostrar')
+                .then(function(response){
+                  console.log(response);
+                    if (response.data.error) {
+            app.errorMessage = response.data.message;
+            console.log(response.data.message);
+          } else {
+            app.listado_instancias = response.data.listado_instancias;
+            app.num_ins_on = response.data.num_ins_on;
+            app.num_ins = response.data.num_ins;
+            app.num_ins_off = response.data.num_ins_off;
+            app.num_ins_ovh = response.data.num_ins_ovh;
+            app.num_ins_codero = response.data.num_ins_codero;
+            app.num_ins_jup = response.data.num_ins_jup;
+            console.log(response.data.listado_instancias);
+          }
+                });
+        },
+
       
-      cargarInstancias: function () {
+      /*cargarInstancias: function () {
         axios.get('<?= $axios_url ?>api/instancias_api.php?accion=listado')
         .then(function (response) {
           console.log(response);
@@ -341,7 +467,7 @@ include('parciales/titulo.php');
             //console.log(response.data.listado_instancias);
           }
         })
-      },
+      },*/
       updateInstancia: function () {
         var formData = app.toFormData(app.clickedInstancia);
         axios.post('<?= $axios_url ?>api/instancias_api.php?accion=actualizar', formData)

@@ -1,5 +1,6 @@
 <?php
 include 'conexion.php';
+include 'funciones.php';
 foreach($_POST as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 foreach($_GET as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 header("Content-type: application/json");
@@ -172,19 +173,82 @@ elseif($accion =="listado_inactivas"){
 }
 
 elseif ($accion == 'actualizar') {
-
+	if(!empty($usuario_id)){
+		$accion = 'actualizar';
 		$passMd5 = md5($usuario_psswrd);
-		$result = $conexion->query("UPDATE usuarios SET usuario_nombre1 = '$usuario_nombre1', usuario_nombre2 = '$usuario_nombre2', usuario_apellido1 = '$usuario_apellido1', usuario_apellido2 = '$usuario_apellido2', usuario_usuario = '$usuario_usuario', usuario_psswrd = '$passMd5' WHERE usuario_id ='$usuario_id'");
-		//$desc_bit = 'Se edito alumno: ' . $alumno_matricula . ' con el alumno_email: ' . $alumno_email . ' y el telefono: ' . $alumno_telefono;
-		//$bitacora = $conn->query("INSERT INTO bitacora (desc_bit) VALUES('$desc_bit')");
+		$passASEencriptada = $encriptar($usuario_pass_ase);
+		$parametros = "usuario_id = '$usuario_id'"; 
 
-		if ($result) {
-			$res['message'] = 'Exito! se actualizo el Usuario ' .$usuario_id;
-			//$res['message2'] = $desc_bit;
-		} else {
-			$res['error']   = true;
-			$res['message'] = 'Error al actualizar Usuario!.';
+		if($usuario_psswrd == '' && $usuario_pass_ase != ''){
+			unset($sql_data_array);
+			$sql_data_array = ['usuario_nombre1' => $usuario_nombre1,
+											 'usuario_nombre2' => $usuario_nombre2,
+											 'usuario_apellido1' => $usuario_apellido1,
+											 'usuario_apellido2' => $usuario_apellido2,
+											 'usuario_usuario' => $usuario_usuario,
+											 'usuario_pass_ase' => $passASEencriptada
+											];		
+			ejecutar_db('usuarios', $sql_data_array, $accion, $parametros);
+			$res['message'] = '1 -> Exito! se actualizo el Usuario ' .$usuario_id;
 		}
+		elseif($usuario_pass_ase == '' && $usuario_psswrd != ''){
+			unset($sql_data_array);
+			$sql_data_array = ['usuario_nombre1' => $usuario_nombre1,
+											 'usuario_nombre2' => $usuario_nombre2,
+											 'usuario_apellido1' => $usuario_apellido1,
+											 'usuario_apellido2' => $usuario_apellido2,
+											 'usuario_usuario' => $usuario_usuario,
+											 //'usuario_pass_ase' => $passASEencriptada
+											 'usuario_psswrd' => $passMd5
+											];		
+			ejecutar_db('usuarios', $sql_data_array, $accion, $parametros);
+			$res['message'] = '2 - >Exito! se actualizo el Usuario ' .$usuario_id;
+		}
+		elseif($usuario_psswrd == '' && $usuario_pass_ase == ''){
+			$sql_data_array = ['usuario_nombre1' => $usuario_nombre1,
+											 'usuario_nombre2' => $usuario_nombre2,
+											 'usuario_apellido1' => $usuario_apellido1,
+											 'usuario_apellido2' => $usuario_apellido2,
+											 'usuario_usuario' => $usuario_usuario,
+											 //'usuario_pass_ase' => $passASEencriptada
+											 //'usuario_psswrd' => $passMd5
+											];		
+			ejecutar_db('usuarios', $sql_data_array, $accion, $parametros);
+			$res['message'] = '3 - >Exito! se actualizo el Usuario ' .$usuario_id;
+		}
+		elseif ($usuario_psswrd != '' && $usuario_pass_ase != '') {
+			$sql_data_array = ['usuario_nombre1' => $usuario_nombre1,
+											 'usuario_nombre2' => $usuario_nombre2,
+											 'usuario_apellido1' => $usuario_apellido1,
+											 'usuario_apellido2' => $usuario_apellido2,
+											 'usuario_usuario' => $usuario_usuario,
+											 'usuario_pass_ase' => $passASEencriptada,
+											 'usuario_psswrd' => $passMd5
+											];		
+			ejecutar_db('usuarios', $sql_data_array, $accion, $parametros);
+			$res['message'] = '4 - >Exito! se actualizo el Usuario ' .$usuario_id;
+		}
+		else {
+
+			
+			
+			//$result = $conexion->query("UPDATE usuarios SET usuario_nombre1 = '$usuario_nombre1', usuario_nombre2 = '$usuario_nombre2', usuario_apellido1 = '$usuario_apellido1', usuario_apellido2 = '$usuario_apellido2', usuario_usuario = '$usuario_usuario', usuario_psswrd = '$passMd5', usuario_pass_ase = '$passASEencriptada' WHERE usuario_id ='$usuario_id'");
+			//$desc_bit = 'Se edito alumno: ' . $alumno_matricula . ' con el alumno_email: ' . $alumno_email . ' y el telefono: ' . $alumno_telefono;
+			//$bitacora = $conn->query("INSERT INTO bitacora (desc_bit) VALUES('$desc_bit')");
+
+			//if ($result) {
+				//$res['message'] = 'Exito! se actualizo el Usuario ' .$usuario_id;
+				//$res['message2'] = $desc_bit;
+			//} else {
+				$res['error']   = true;
+				$res['message'] = 'Error al actualizar Usuario!.';
+			}
+	}
+	else{
+		$res['error']   = true;
+				$res['message'] = 'Error al actualizar Usuario!, no hay ID';
+	}
+	
 }
 /*elseif ($accion == 'agregar') {
 
@@ -249,19 +313,46 @@ elseif ($accion == 'actualizar') {
 }*/
 
 elseif ($accion == 'agregar') {
-	$foto = 'dist/img/usuario.png';
-	$activo = '1';
-	$passMd5 = md5($usuario_psswrd_add);
-	$sql_add_usr = $conexion->query("INSERT INTO usuarios (usuario_nombre1, usuario_nombre2, usuario_apellido1, usuario_apellido2, usuario_usuario, usuario_psswrd, usuario_activo, usuario_foto) VALUES('$usuario_nombre1_add', '$usuario_nombre2_add', '$usuario_apellido1_add', '$usuario_apellido2_add', '$usuario_usuario_add', '$passMd5', '$activo', '$foto')");
-
-	if ($sql_add_usr) {
-		$mensaje = 'Se agrego correctamente el Usuario: '.$usuario_usuario_add;
-		$res['message'] = $mensaje;
-	} 
-	else {
+	if (empty($usuario_nombre1_add) OR empty($usuario_usuario_add) OR empty($usuario_apellido1_add) OR empty($usuario_psswrd_add) OR empty($usuario_pass_ase_add)){
 		$res['error']   = true;
-		$mensaje = 'Error agregar el usuario: ' . $usuario_usuario_add.' ==> ' .$sql_add_usr;
-		$res['message'] = $mensaje;
+		$mensaje1 = 'Faltan los datos: ';
+		if(empty($usuario_nombre1_add)) { $mensaje = ' Primer Nombre|' . $mensaje; }
+		if(empty($usuario_usuario_add)) { $mensaje = ' Usuario|' . $mensaje; }
+		if(empty($usuario_apellido1_add)) { $mensaje = ' Primer Apellido|' . $mensaje; }
+		if(empty($usuario_psswrd_add)) { $mensaje = ' Contraseña|' . $mensaje; }
+		if(empty($usuario_pass_ase_add)) { $mensaje = ' Contraseña ASE|' . $mensaje; }
+		
+		$res['message'] = $mensaje1 . ' ' .$mensaje;
+	}
+	else{
+		$foto = 'dist/img/usuario.png';
+		$activo = '1';
+		$passMd5 = md5($usuario_psswrd_add);
+		$passASEencriptada = $encriptar($usuario_pass_ase_add);
+
+		$sql_verifica_usr = "SELECT usuario_usuario FROM usuarios WHERE usuario_usuario = '$usuario_usuario_add'";
+		$consulta_vu = $conexion->query($sql_verifica_usr);
+		$existe = $consulta_vu->num_rows;
+		if($exite > 0){
+			$sql_add_usr = $conexion->query("INSERT INTO usuarios (usuario_nombre1, usuario_nombre2, usuario_apellido1, usuario_apellido2, usuario_usuario, usuario_psswrd, usuario_activo, usuario_foto, usuario_pass_ase) VALUES('$usuario_nombre1_add', '$usuario_nombre2_add', '$usuario_apellido1_add', '$usuario_apellido2_add', '$usuario_usuario_add', '$passMd5', '$activo', '$foto', '$passASEencriptada')");
+
+			if ($sql_add_usr) {
+				$mensaje = 'Se agrego correctamente el Usuario: '.$usuario_usuario_add;
+				$res['message'] = $mensaje;
+			} 
+			else {
+				$res['error']   = true;
+				$mensaje = 'Error agregar el usuario: ' . $usuario_usuario_add.' ==> ' .$sql_add_usr;
+				$res['message'] = $mensaje;
+			}
+		}
+		else{
+			$res['error']   = true;
+			$mensaje = 'El usuario: ' .$usuario_usuario_add .' Ya existe!!!';
+			$res['message'] = $mensaje;
+		}
+
+		
 	}
 }
 

@@ -119,23 +119,25 @@
           const form = document.getElementById('inicioSesion')
           axios.post('login.php?accion=validar', new FormData(form))
           .then( res =>{
-            this.respuesta = res.data
+            //this.respuesta = res.data
             if(res.data == 'Entrando...'){
               location.href = 'index.php'
             } else{
               this.mostrarRespuesta = true
               if(res.data == 'Se produjo un error al iniciar sesión, verifica tus credenciales e intenta de nuevo.'){
-                Swal.fire({
+                this.respuesta = res.data
+               /* Swal.fire({
                   type: 'error',
                   title: 'Error',
                   text: 'Correo y/o contraseña incorrectos!',
-                })
+                })*/
               } else {
-                Swal.fire({
+                this.respuesta = res.data
+                /*Swal.fire({
                   type: 'error',
                   title: 'Error',
                   text: res.data,
-                })
+                })*/
               }
             }
           })

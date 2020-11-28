@@ -26,6 +26,40 @@ if($accion == 'entrar' && !isset($_SESSION['usr'])){ // --- Iniciar sesión si e
 elseif($accion == 'validar'){ // --- Validar datos ---
 		
 	include 'api/conexion.php';
+	//include 'api/funciones.php';
+
+	/////////////////////////////////////////////////////////////////////////////////////////
+	//Configuración del algoritmo de encriptación
+
+	$clave  = '38365119959639461c19a0b8dc84b61e';
+
+	//Metodo de encriptación
+	$method = 'aes-256-cbc';
+
+	// Puede generar una diferente usando la funcion $getIV()
+	$iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
+
+	 /*
+	 Encripta el contenido de la variable, enviada como parametro.
+	  */
+	 $encriptar = function ($valor) use ($method, $clave, $iv) {
+	     return openssl_encrypt ($valor, $method, $clave, false, $iv);
+	 };
+
+	 /*
+	 Desencripta el texto recibido
+	 */
+	 $desencriptar = function ($valor) use ($method, $clave, $iv) {
+	     $encrypted_data = base64_decode($valor);
+	     return openssl_decrypt($valor, $method, $clave, false, $iv);
+	 };
+
+	 /*
+	 Genera un valor para IV
+	 */
+	 $getIV = function () use ($method) {
+	     return base64_encode(openssl_random_pseudo_bytes(openssl_cipher_iv_length($method)));
+	 };
 
 	// --- Limpiar variables ---
 	$email = $conexion->real_escape_string(htmlentities($email));
@@ -50,7 +84,8 @@ elseif($accion == 'validar'){ // --- Validar datos ---
 		$_SESSION['usuario_id'] = $datos['usuario_id'];
 		
 		// ---- Consultar información extra del alumno, administrador o profesor ---
-
+			$pass_ase = $datos['usuario_pass_ase'];
+			$pass_ase_desencriptada = $desencriptar($pass_ase);
 			$_SESSION['usuario_id'] = $datos['alumno_id'];
 			$_SESSION['usuario_usuario'] = $datos['usuario_usuario'];
 			$_SESSION['usuario_nombre1'] = $datos['usuario_nombre1'];
@@ -65,6 +100,7 @@ elseif($accion == 'validar'){ // --- Validar datos ---
 			$_SESSION['config_accent'] = $datos['config_accent'];
 			$_SESSION['config_sidebar'] = $datos['config_sidebar'];
 			$_SESSION['config_brand'] = $datos['config_brand'];
+			$_SESSION['usuario_pass_ase'] = $pass_ase_desencriptada;
 
 
 		//print_r($_SESSION);

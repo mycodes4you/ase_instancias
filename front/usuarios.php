@@ -164,8 +164,13 @@ include('parciales/titulo.php');
               </div>
 
               <div class="form-group">
-                <label for="usuario_psswrd">Contraseña</label>
-                <input type="text" class="form-control" id="usuario_psswrd" v-model="clickedUsuario.usuario_psswrd">
+                <label for="usuario_psswrd">Contraseña </label>
+                <input type="password" class="form-control" id="usuario_psswrd" v-model="clickedUsuario.usuario_psswrd" placeholder="Deja en blanco para NO CAMBIAR">
+              </div>
+
+              <div class="form-group">
+                <label for="usuario_pass_ase">Contraseña Autoshop </label>
+                <input type="password" class="form-control" id="usuario_pass_ase" v-model="clickedUsuario.usuario_pass_ase" placeholder="Deja en blanco para NO CAMBIAR">
               </div>
             
 
@@ -199,10 +204,11 @@ include('parciales/titulo.php');
               <!--<img v-if="eurl" :src="eurl" width="200px"><br> -->
               <!--<input class="form-control" type="file" name="usuario_foto_add" ref="usuario_foto_add" id="usuario_foto_add" v-on:change="everImagen();">-->
 
-
+              {{errorMessage}}
+            
               <div class="form-group">
-                <label for="usuario_nombre1_add">Primer Nombre</label>
-                <input type="text" class="form-control" id="usuario_nombre1_add" v-model="nuevoUsuario.usuario_nombre1">
+                <label for="usuario_nombre1_add">Primer Nombre*</label>
+                <input type="text" class="form-control" id="usuario_nombre1_add" v-model="nuevoUsuario.usuario_nombre1" required>
               </div>
 
               <div class="form-group">
@@ -212,7 +218,7 @@ include('parciales/titulo.php');
 
               <div class="form-group">
                 <label for="usuario_apellido1_add">Apellido Paterno</label>
-                <input type="text" class="form-control" id="usuario_apellido1_add" v-model="nuevoUsuario.usuario_apellido1">
+                <input type="text" class="form-control" id="usuario_apellido1_add" v-model="nuevoUsuario.usuario_apellido1" required>
               </div>
 
               <div class="form-group">
@@ -221,14 +227,20 @@ include('parciales/titulo.php');
               </div>
 
               <div class="form-group">
-                <label for="usuario_usuario_add">Usuario</label>
-                <input type="text" class="form-control" id="usuario_usuario_add" v-model="nuevoUsuario.usuario_usuario">
+                <label for="usuario_usuario_add">Usuario*</label>
+                <input type="text" class="form-control" id="usuario_usuario_add" v-model="nuevoUsuario.usuario_usuario" required>
               </div>
 
               <div class="form-group">
                 <label for="usuario_psswrd_add">Contraseña</label>
-                <input type="password" class="form-control" id="usuario_psswrd_add" v-model="nuevoUsuario.usuario_psswrd">
+                <input type="password" class="form-control" id="usuario_psswrd_add" v-model="nuevoUsuario.usuario_psswrd" required>
               </div>
+
+              <div class="form-group">
+                <label for="usuario_pass_ase_add">Contraseña ASE</label>
+                <input type="password" class="form-control" id="usuario_pass_ase_add" v-model="nuevoUsuario.usuario_pass_ase" required>
+              </div>
+  
             
 
 
@@ -236,7 +248,8 @@ include('parciales/titulo.php');
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-              <button type="button" class="btn btn-success" @click="showingaddModal = false; newUsuario();" data-dismiss="modal"><i class="fas fa-save"></i> Guardar</button>
+             <button type="button" class="btn btn-success" @click="showingaddModal = false; newUsuario();" data-dismiss="modal"><i class="fas fa-save"></i> Guardar</button>
+             
             </div>
           </div>
           <!-- /.modal-content -->
@@ -291,7 +304,8 @@ include('parciales/titulo.php');
         usuario_apellido2_add: "",
         usuario_usuario_add: "",
         usuario_psswrd_add: "",
-        usuario_foto_add: ""
+        usuario_foto_add: "",
+        usuario_pass_ase_add: ""
 
       }
     },
@@ -306,7 +320,9 @@ include('parciales/titulo.php');
       moment: function () {
       return moment();
       },      
+
       
+
       cargarUsuarios: function () {
         axios.get('<?= $axios_url ?>api/usuarios_api.php?accion=listado')
         .then(function (response) {
@@ -365,6 +381,7 @@ include('parciales/titulo.php');
         formdata.append("usuario_apellido2_add",document.getElementById("usuario_apellido2_add").value);
         formdata.append("usuario_usuario_add",document.getElementById("usuario_usuario_add").value);
         formdata.append("usuario_psswrd_add",document.getElementById("usuario_psswrd_add").value);
+        formdata.append("usuario_pass_ase_add",document.getElementById("usuario_pass_ase_add").value);
 
         axios.post('<?= $axios_url ?>api/usuarios_api.php?accion=agregar', formdata)
         .then(function(response){
