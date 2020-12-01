@@ -22,6 +22,36 @@ if ($hora<12) {
 }else{ 
 	$saludo = '<i class="fas fa-moon fa-lg" style="color: blue; text-shadow: 0 0 5px #000;"></i> Buenas Noches bienvenid@ a Instancias Autoshop-Easy by KUMO'; 
 }
+$usuario_id = $_SESSION['usuario_id'];
+$consulta_permisos = "SELECT * FROM b64_permisos_otorgados WHERE id_u_p_o = '$usuario_id' AND estado_permiso = '1'";
+$consultar_p = $conexion->query($consulta_permisos) or die ('Error al consultar permisos ' . $consulta_permisos);
+$permisos_l = [];
+while ($permisos_lista = $consultar_p->fetch_array()) {
+	$array_permisos = array($permisos_lista['numero_p_o']);
+	array_push($permisos_l, $array_permisos);
+}
+
+$checaPermiso = function ($array, $pregunta_p){
+            foreach($array as $claves => $permisos){
+            	//echo '1 f - ' .$claves .':<br>';
+            	//print_r($permisos);
+              foreach ($permisos as $permiso) {
+               // echo $permiso .' <br>';
+               // if($pregunta_p == $permiso){
+               	if($pregunta_p == $permiso){
+                  //echo 'Tienes el Permiso '.$pregunta_p.' Activo<br>';
+                   $res_permiso = $permiso . ' PERMITIDO';
+               	
+                }
+                else{
+                  //echo 'No tienes el permiso '.$pregunta_p'<br>';
+                 
+                  $res_permiso = $permiso . ' NO PERMITIDO';
+                }
+                
+              }
+            }return $res_permiso;
+          };
 
 
 
@@ -64,7 +94,7 @@ elseif($accion == 'instancias'){
 	$menu_todas = 'active';
 	$menu_instancias = 'active';
 	// --- BACKEND ----
-	include('front/instancias.php');
+	include('front/423.php');
 	unset($_SESSION['mensajes']);
 	
 }

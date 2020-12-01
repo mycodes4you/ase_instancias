@@ -86,7 +86,7 @@ elseif($accion == 'validar'){ // --- Validar datos ---
 		// ---- Consultar información extra del alumno, administrador o profesor ---
 			$pass_ase = $datos['usuario_pass_ase'];
 			$pass_ase_desencriptada = $desencriptar($pass_ase);
-			$_SESSION['usuario_id'] = $datos['alumno_id'];
+			//$_SESSION['usuario_id'] = $datos['alumno_id'];
 			$_SESSION['usuario_usuario'] = $datos['usuario_usuario'];
 			$_SESSION['usuario_nombre1'] = $datos['usuario_nombre1'];
 			$_SESSION['usuario_nombre2'] = $datos['usuario_nombre2'];
@@ -101,6 +101,9 @@ elseif($accion == 'validar'){ // --- Validar datos ---
 			$_SESSION['config_sidebar'] = $datos['config_sidebar'];
 			$_SESSION['config_brand'] = $datos['config_brand'];
 			$_SESSION['usuario_pass_ase'] = $pass_ase_desencriptada;
+
+
+			
 
 
 		//print_r($_SESSION);

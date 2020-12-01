@@ -4,7 +4,10 @@ include 'funciones.php';
 foreach($_POST as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 foreach($_GET as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 header("Content-type: application/json");
-
+session_start();
+if(!isset($_SESSION['usr'])){
+	header("location:../login.php?accion=entrar"); // --- redirigir a login si no hay sesión ---
+}
 if($accion === "listado"){
 	
 	// --- Consulta para listado de carreras

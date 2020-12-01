@@ -22,9 +22,9 @@
     <img src="https://entrenamiento.autoshop-easy.com/particular/logo-agencia.png">
     <a href="index.php"><br><b>ASE -</b> KUMO / 雲 </a>
     
-          <div v-if="mostrarRespuesta"> <!-- Ayuda -->
+          <!--<div v-if="mostrarRespuesta"> 
             <p>res: {{ respuesta }}</p>
-          </div>
+          </div>-->
          
       
   </div>

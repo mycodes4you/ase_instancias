@@ -37,33 +37,38 @@ include('parciales/titulo.php');
         </div>
         <div class="card-body">
           
-          <div class="card-body p-0">
-            <div class="btn-group">
-              <button class="btn btn-app" style="background-color: grey; color: white;" @click="cargarInstancias();">
-                <big><b>{{num_ins}}</b></big><br> Total
+          <div class="card-body p-0" style="text-align: center;">            
+              <button class="btn btn-app bg-info" @click="cargarInstancias();">
+                <i class="fas fa-building"></i>
+                <big><b>{{num_ins}}</b></big> Total
               </button>
             
               <button class="btn btn-app bg-success" @click="ins_activas();">
-                <big><b>{{num_ins_on}}</b></big><br> Activas
+                <i class="fas fa-toggle-on"></i>
+                <big><b>{{num_ins_on}}</b></big> Activas
               </button>
 
               <button class="btn btn-app bg-danger" @click="ins_inactivas();">
-                <big><b>{{num_ins_off}}</b></big><br> Inactivas
+                <i class="fas fa-toggle-off"></i>
+                <big><b>{{num_ins_off}}</b></big> Inactivas
               </button>
 
               <button class="btn btn-app" style="background-color: #00f4ff; color: grey;" @click="ins_codero();">
-                <big><b>{{num_ins_codero}}</b></big><br> Codero
+                <i class="fas fa-server"></i>
+                <big><b>{{num_ins_codero}}</b></big> Codero
               </button>
 
               <button class="btn btn-app bg-warning" @click="ins_ovh();">
-                <big><b>{{num_ins_ovh}}</b></big><br> OVH
+                <i class="fas fa-server"></i>
+                <big><b>{{num_ins_ovh}}</b></big> OVH
               </button>
 
               <button class="btn btn-app" style="background-color: #6610f2; color: white;" @click="ins_jupiter();">
-                <big><b>{{num_ins_jup}}</b></big><br> Jupiter
+                <i class="fas fa-server"></i>
+                <big><b>{{num_ins_jup}}</b></big> Jupiter
               </button><br>
               
-            </div>
+         
             <div class="form-group">
                 <label for="instancia_nombre">Buscar Instancia</label>          
                 <input type="text" class="form-control" placeholder="Buscar Instancia" v-on:keyup="searchMonitor" v-model="search.keyword">
@@ -76,7 +81,12 @@ include('parciales/titulo.php');
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Listado de Instancias</h3>
+          <h3 class="card-title">Listado de Instancias {{titulo}}</h3>
+          <div class="card-tools">
+           <button class="btn btn-success"><i class="fas fa-plus"></i> Instancia</button>
+            
+          </div>
+          
         </div>
         <div class="card-body">
           <div class="card-body p-0">
@@ -283,6 +293,7 @@ include('parciales/titulo.php');
       num_ins_ovh: "",
       num_ins_codero: "",
       num_ins_jup: "",
+      titulo: "",
       showingeditModal: false,
       clickedInstancia: {},
       servidores: [{
@@ -332,6 +343,7 @@ include('parciales/titulo.php');
             app.num_ins_ovh = response.data.num_ins_ovh;
             app.num_ins_codero = response.data.num_ins_codero;
             app.num_ins_jup = response.data.num_ins_jup;
+            app.titulo = response.data.titulo;
             console.log(response.data.listado_instancias);
           }
                 });
@@ -351,6 +363,7 @@ include('parciales/titulo.php');
             app.num_ins_ovh = response.data.num_ins_ovh;
             app.num_ins_codero = response.data.num_ins_codero;
             app.num_ins_jup = response.data.num_ins_jup;
+            app.titulo = response.data.titulo;
             console.log(response.data.listado_instancias);
           }
                 });
@@ -370,6 +383,7 @@ include('parciales/titulo.php');
             app.num_ins_ovh = response.data.num_ins_ovh;
             app.num_ins_codero = response.data.num_ins_codero;
             app.num_ins_jup = response.data.num_ins_jup;
+            app.titulo = response.data.titulo;
             console.log(response.data.listado_instancias);
           }
                 });
@@ -389,6 +403,7 @@ include('parciales/titulo.php');
             app.num_ins_ovh = response.data.num_ins_ovh;
             app.num_ins_codero = response.data.num_ins_codero;
             app.num_ins_jup = response.data.num_ins_jup;
+            app.titulo = response.data.titulo;
             console.log(response.data.listado_instancias);
           }
                 });
@@ -408,6 +423,7 @@ include('parciales/titulo.php');
             app.num_ins_ovh = response.data.num_ins_ovh;
             app.num_ins_codero = response.data.num_ins_codero;
             app.num_ins_jup = response.data.num_ins_jup;
+            app.titulo = response.data.titulo;
             console.log(response.data.listado_instancias);
           }
                 });
@@ -442,6 +458,7 @@ include('parciales/titulo.php');
             app.num_ins_ovh = response.data.num_ins_ovh;
             app.num_ins_codero = response.data.num_ins_codero;
             app.num_ins_jup = response.data.num_ins_jup;
+            app.titulo = response.data.titulo;
             console.log(response.data.listado_instancias);
           }
                 });
