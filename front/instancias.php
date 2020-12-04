@@ -71,7 +71,7 @@ include('parciales/titulo.php');
          
             <div class="form-group">
                 <label for="instancia_nombre">Buscar Instancia</label>          
-                <input type="text" class="form-control" placeholder="Buscar Instancia" v-on:keyup="searchMonitor" v-model="search.keyword">
+                <input type="text" class="form-control" placeholder="Buscar Instancia" v-on:keyup="searchMonitor" v-model="search.keyword" autofocus>
               </div>
           </div>
 
