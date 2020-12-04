@@ -10,7 +10,7 @@ if(!isset($_SESSION['usr'])){
 if ($accion == 'actualizar') {
 
 
-		$result = $conexion->query("UPDATE b64_instancias SET nombre_instancia = '$instancia_nombre', servidor_instancia = '$instancia_servidor', fecha_ssl_instancia = '$instancia_ssl' WHERE id_instancia ='$instancia_id'");
+		$result = $conexion->query("UPDATE b64_instancias SET nombre_instancia = '$instancia_nombre', servidor_instancia = '$instancia_servidor', fecha_ssl_instancia = '$instancia_ssl', prefijo_instancias = '$instancia_prefijo' WHERE id_instancia ='$instancia_id'");
 		//$desc_bit = 'Se edito alumno: ' . $alumno_matricula . ' con el alumno_email: ' . $alumno_email . ' y el telefono: ' . $alumno_telefono;
 		//$bitacora = $conn->query("INSERT INTO bitacora (desc_bit) VALUES('$desc_bit')");
 
@@ -42,7 +42,8 @@ if($accion=='mostrar'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 		
@@ -93,7 +94,8 @@ if($accion=='buscar'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 	}
@@ -117,7 +119,8 @@ if($accion=='activas'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 		
@@ -168,7 +171,8 @@ if($accion=='inactivas'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 		
@@ -220,7 +224,8 @@ if($accion=='codero'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 		
@@ -272,7 +277,8 @@ if($accion=='ovh'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 		
@@ -324,7 +330,8 @@ if($accion=='jupiter'){
 										 'instancia_servidor' => $servidor,
 										 'instancia_img' => $lista_instancias['img_instancia'],
 										 'instancia_estado' => $lista_instancias['activa_instancia'],
-										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia']
+										 'instancia_ssl' => $lista_instancias['fecha_ssl_instancia'],
+										 'instancia_prefijo' => $lista_instancias['prefijo_instancias']
 				);
 		array_push($listado_instancias, $arreglo); 
 		

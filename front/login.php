@@ -132,7 +132,7 @@
                   text: 'Correo y/o contraseña incorrectos!',
                 })*/
               } else {
-                this.respuesta = res.data
+                //this.respuesta = res.data
                 /*Swal.fire({
                   type: 'error',
                   title: 'Error',

@@ -98,6 +98,7 @@ include('parciales/titulo.php');
                       <th>Nombre</th>
                       <th>Renovacion SSL</th>
                       <th>Servidor</th>
+                      <th>Prefijo BD</th>
                       <th style="width: 40px">Estado</th>
                       <th style="width: 10px">Editar</th>
                     </tr>
@@ -126,6 +127,9 @@ include('parciales/titulo.php');
                       </td>
                       <td>
                         {{instancia.instancia_ssl}}
+                      </td>
+                      <td>
+                        {{instancia.instancia_prefijo}}
                       </td>
                       <td>
                         <div v-if="instancia.instancia_servidor == 'Apagado'">
@@ -245,6 +249,10 @@ include('parciales/titulo.php');
                   </div>
                   <!-- /.input group -->
                 </div>
+              <div class="form-group">
+                <label for="instancia_prefijo">Nombre DB</label>
+                <input type="text" class="form-control" id="instancia_prefijo" v-model="clickedInstancia.instancia_prefijo">
+              </div>
 
 
 

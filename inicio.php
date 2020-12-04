@@ -2,7 +2,7 @@
 foreach($_POST as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 foreach($_GET as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 session_start(); // --- Validar sesión ---
-
+error_reporting(0);
 include ('api/conexion.php');
 
 // ---- Se establece la zona horarira y el lenguaje
@@ -22,6 +22,8 @@ if ($hora<12) {
 }else{ 
 	$saludo = '<i class="fas fa-moon fa-lg" style="color: blue; text-shadow: 0 0 5px #000;"></i> Buenas Noches bienvenid@ a Instancias Autoshop-Easy by KUMO'; 
 }
+
+
 $usuario_id = $_SESSION['usuario_id'];
 $consulta_permisos = "SELECT * FROM b64_permisos_otorgados WHERE id_u_p_o = '$usuario_id' AND estado_permiso = '1'";
 $consultar_p = $conexion->query($consulta_permisos) or die ('Error al consultar permisos ' . $consulta_permisos);
@@ -94,7 +96,7 @@ elseif($accion == 'instancias'){
 	$menu_todas = 'active';
 	$menu_instancias = 'active';
 	// --- BACKEND ----
-	include('front/423.php');
+	include('front/instancias.php');
 	unset($_SESSION['mensajes']);
 	
 }

@@ -1,4 +1,6 @@
 <?php
+
+
 function ejecutar_db($table, $data, $action, $parameters) {
     
     reset($data);

@@ -151,7 +151,8 @@
             </a>
             
           </li>
-          <li class="nav-item <?= $menu_instancias_abierto ?>">
+          <!--<li class="nav-item <?= $menu_instancias_abierto ?>">-->
+          <li class="nav-item">
             <a href="inicio.php?accion=instancias" class="nav-link <?= $menu_instancias ?>">
               <i class="nav-icon fas fa-building"></i>
               <p>
@@ -159,45 +160,6 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="inicio.php?accion=instancias" class="nav-link <?= $menu_todas ?>">
-                  <i class="fas fa-building nav-icon"></i>
-                  <p>Todas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="inicio.php?accion=instancias_activas" class="nav-link <?= $menu_instancias_activas ?>">
-                  <i class="fas fa-toggle-on nav-icon"></i>
-                  <p>Activas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="inicio.php?accion=instancias_inactivas" class="nav-link <?= $menu_instancias_inactivas ?>">
-                  <i class="fas fa-toggle-off nav-icon"></i>
-                  <p>Inactivas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="inicio.php?accion=instancias_codero" class="nav-link <?= $menu_instancias_codero ?>">
-                  <i class="fas fa-server nav-icon"></i>
-                  <p>Codero</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="inicio.php?accion=instancias_ovh" class="nav-link <?= $menu_instancias_ovh ?>">
-                  <i class="fas fa-server nav-icon"></i>
-                  <p>OVH</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="inicio.php?accion=instancias_jupiter" class="nav-link <?= $menu_instancias_jupiter ?>">
-                  <i class="fas fa-server nav-icon"></i>
-                  <p>Jupiter</p>
-                </a>
-              </li>
-            </ul>
-            
           </li>
 
 

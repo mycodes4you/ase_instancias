@@ -102,6 +102,10 @@ elseif($accion == 'validar'){ // --- Validar datos ---
 			$_SESSION['config_brand'] = $datos['config_brand'];
 			$_SESSION['usuario_pass_ase'] = $pass_ase_desencriptada;
 
+			
+			$_SESSION['Login'] = 'True';
+			$_SESSION['Time'] = time();
+
 
 			
 

@@ -11,7 +11,7 @@
 	} else{
 		
 		echo 'hay sesión<br>';
-		header("location:inicio.php?accion=dashboard"); // --- redirigir si hay sesión ---
+		header("location:inicio.php?accion=instancias"); // --- redirigir si hay sesión ---
 			
 	}
 

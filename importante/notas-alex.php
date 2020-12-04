@@ -66,13 +66,13 @@ Pf33.AxMDup.t8xm
 
 Comando para convertir las llaves privadas de CSD (*.key) a formato PEM para poder sellar con PHP:
 
-openssl pkcs8 -inform DER -in BSP200317UD6.key.key -out BSP200317UD6.key.pem -passin pass:Empresa1
+openssl pkcs8 -inform DER -in CSD_CACX7605101P8.key -out CSD_CACX7605101P8.key.pem -passin pass:12345678a
 
 
 
 Comando para convertir las llaves públicas de CSD (*.cer) a formato PEM para poder sellar con PHP:
 
-openssl x509 -inform DER -outform PEM -in BSP200317UD6.cer -pubkey -out BSP200317UD6.cer.pem
+openssl x509 -inform DER -outform PEM -in CSD_CACX7605101P8.cer -pubkey -out CSD_CACX7605101P8.cer.pem
 
 
 
@@ -80,6 +80,14 @@ qebec
 aurora
 controldb quite la proteccion
 
+
+
+
+
+autoshop mycodes
+admin_autoshop
+as67Wy6
+2rqx2L4&
 
 
 ?>
