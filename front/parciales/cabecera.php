@@ -15,7 +15,11 @@
   <script src="plugins/vue/vue-moment.js"></script>
   <script src="plugins/vue/vue.min.js"></script>
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
 <body class="hold-transition sidebar-mini <?= $_SESSION['config_accent'] ?>">
+  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="plugins/toastr/toastr.min.js"></script>
+  <script src="plugins/jquery/jquery.min.js"></script>
 	<!-- Site wrapper -->
 	<div class="wrapper">

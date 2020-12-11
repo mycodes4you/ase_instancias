@@ -90,22 +90,22 @@ include('parciales/titulo.php');
         </div>
         <div class="card-body">
           <div class="card-body p-0">
-                <table class="table table-bordered table-hover" id="example2">
+                <table class="table table-bordered table-hover table-responsive" id="example2">
                   <thead>
                     <tr>
                       <th style="width: 10px">ID</th>
                       <th>Logo</th>
                       <th>Nombre</th>
                       <th>Renovacion SSL</th>
-                      <th>Servidor</th>
                       <th>Prefijo BD</th>
+                      <th>Servidor</th>
                       <th style="width: 40px">Estado</th>
                       <th style="width: 10px">Editar</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-if="noMember">
-                            <td colspan="2" align="center">Ningún miembro coincide con su búsqueda</td>
+                            <td colspan="8" align="center">Ninguna Instancia coincide con su búsqueda <br><big><b>{{search.keyword}}</b></big></td>
                         </tr>
                     <tr v-for="instancia of listado_instancias">
                       <td>{{instancia.instancia_id}}</td>
@@ -199,6 +199,10 @@ include('parciales/titulo.php');
                 <input type="text" class="form-control" id="instancia_nombre" v-model="clickedInstancia.instancia_nombre">
                 <input type="hidden" class="form-control" id="instancia_id" v-model="clickedInstancia.instancia_id">
               </div>
+              <div class="form-group">
+                <label for="instancia_subdominio">Subdominio Instancia</label>
+                <input type="text" class="form-control" id="instancia_subdominio" v-model="clickedInstancia.instancia_subdominio">
+              </div>
               <!-- select dependiendo el actual -->
               <div class="form-group" v-if="clickedInstancia.instancia_servidor == 'Apagado'">
                 <label>Servidor</label>
@@ -258,8 +262,8 @@ include('parciales/titulo.php');
 
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-              <button type="button" class="btn btn-success" @click="showingeditModal = false; updateInstancia();" data-dismiss="modal"><i class="fas fa-save"></i> Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> </button>
+              <button type="submit" class="btn btn-success" @click="showingeditModal = false; updateInstancia();" data-dismiss="modal"><i class="fas fa-save"></i></button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -280,8 +284,6 @@ include('parciales/titulo.php');
 
   </div>
   <!-- /.content-wrapper -->
-
-
 <script type="text/javascript">
   Vue.use('vue-moment');
   var now = moment();
@@ -456,43 +458,25 @@ include('parciales/titulo.php');
                 .then(function(response){
                   console.log(response);
                     if (response.data.error) {
-            app.errorMessage = response.data.message;
-            console.log(response.data.message);
-          } else {
-            app.listado_instancias = response.data.listado_instancias;
-            app.num_ins_on = response.data.num_ins_on;
-            app.num_ins = response.data.num_ins;
-            app.num_ins_off = response.data.num_ins_off;
-            app.num_ins_ovh = response.data.num_ins_ovh;
-            app.num_ins_codero = response.data.num_ins_codero;
-            app.num_ins_jup = response.data.num_ins_jup;
-            app.titulo = response.data.titulo;
-            console.log(response.data.listado_instancias);
-          }
+                      app.errorMessage = response.data.message;
+                      console.log(response.data.message);
+                      
+                    } 
+                    else {
+                      app.listado_instancias = response.data.listado_instancias;
+                      app.num_ins_on = response.data.num_ins_on;
+                      app.num_ins = response.data.num_ins;
+                      app.num_ins_off = response.data.num_ins_off;
+                      app.num_ins_ovh = response.data.num_ins_ovh;
+                      app.num_ins_codero = response.data.num_ins_codero;
+                      app.num_ins_jup = response.data.num_ins_jup;
+                      app.titulo = response.data.titulo;
+                      console.log(response.data.listado_instancias);
+                     
+                    }
                 });
         },
 
-      
-      /*cargarInstancias: function () {
-        axios.get('<?= $axios_url ?>api/instancias_api.php?accion=listado')
-        .then(function (response) {
-          console.log(response);
-
-          if (response.data.error) {
-            app.errorMessage = response.data.message;
-            //console.log(response.data.message);
-          } else {
-            app.listado_instancias = response.data.listado_instancias;
-            app.num_ins_on = response.data.num_ins_on;
-            app.num_ins = response.data.num_ins;
-            app.num_ins_off = response.data.num_ins_off;
-            app.num_ins_ovh = response.data.num_ins_ovh;
-            app.num_ins_codero = response.data.num_ins_codero;
-            app.num_ins_jup = response.data.num_ins_jup;
-            //console.log(response.data.listado_instancias);
-          }
-        })
-      },*/
       updateInstancia: function () {
         var formData = app.toFormData(app.clickedInstancia);
         axios.post('<?= $axios_url ?>api/instancias_api.php?accion=actualizar', formData)
@@ -504,10 +488,29 @@ include('parciales/titulo.php');
             app.errorMessage = response.data.message;
             //app.notificacionE('top','center');
           } else {
-            app.successMessage = response.data.message;
-                //app.successMessage2 = response.data.message2;
             app.cargarInstancias();
-            //app.notificacionS('top','center');
+            
+            //NOTIFICACION EXITO
+            $(function() {
+              var Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: true,
+                timer: 5000
+              });
+              $('.toastsDefaultSuccess').ready(function() {
+                $(document).Toasts('create', {
+                  class: 'bg-success',
+                  title: 'Exito!',
+                  subtitle: 'Autoshop-Easy Instancias',
+                  body: response.data.message,
+                  delay: 5000,
+                  autohide: true,
+                  image: response.data.instancia
+                })
+              });
+            });
+            // FIN ------- NOTIFICACION EXITO
           }
         });
       },

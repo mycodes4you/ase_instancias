@@ -23,3 +23,4 @@
         <big><center><?= $hora_actual ?></center></big>
       </div>
     </section>
+    
