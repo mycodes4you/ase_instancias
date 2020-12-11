@@ -90,4 +90,16 @@ as67Wy6
 2rqx2L4&
 
 
+
+
+
+
+
+51.222.86.151:10000
+root
+rMOc3cqIwUuC4eljDFYczm8nzMpqn4GWajUMUolzvg
+
+
+
+mysql pass TtzYaM8yMYB1Hpwu
 ?>

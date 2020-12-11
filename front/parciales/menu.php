@@ -117,7 +117,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar <?= $_SESSION['config_sidebar'] ?> elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="<?= $_SESSION['config_brand'] ?>">
+    <a href="index.php" class="brand-link <?= $_SESSION['config_brand'] ?>">
       <img src="dist/img/AdminLTELogo.png" alt="KUMO" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">ASE | KUMO</span>
     </a>
