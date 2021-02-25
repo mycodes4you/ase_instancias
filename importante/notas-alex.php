@@ -11,19 +11,12 @@ $apache_start_on = 'sudo systemctl enable apache2';
 $mysql_status = 'systemctl status mysql.service';
 
 
-controldb
-AlexRami07
-Jdw7z.eW2z
+$controldb_usuario = "AlexRami07";
+$cibtroldb_password = "Jdw7z.eW2z";
 
 
-soporte  
- D-2htsH.gst5v23k
-
- x
-
-phpmyadmin
-autoshop
-6tb1f1Oc
+$phpmyadmin_usuario = "autoshop";
+$phpmyadmin_password = "6tb1f1Oc";
 
 
 ssh quiien v
@@ -107,4 +100,15 @@ rMOc3cqIwUuC4eljDFYczm8nzMpqn4GWajUMUolzvg
 
 
 mysql pass TtzYaM8yMYB1Hpwu
+
+
+
+$comando_importar_bd_mysql = "sudo ./mysql -u autoshop -p saiRoF73 < /home/alex/Descargas/saiRoF73.sql";
+
 ?>
+
+
+Jf9dkh-gfdp3G2.Codero	autoshopmgr.com
+Jf9dkh-gfdp3G2.CAOvh   carshopmgr.com
+Jf9dkh-gfdp3G2.Jupiter
+Jf9dkh-gfdp3G2.Cobre	vaicop.noip.me
