@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Instancias ASE | KUMO | Log in</title>
+  <title>KUMO | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,7 +20,7 @@
 <div class="login-box" id="app">
   <div class="login-logo">
     <img src="https://entrenamiento.autoshop-easy.com/particular/logo-agencia.png">
-    <a href="index.php"><br><b>ASE -</b> KUMO / 雲 </a>
+    <a href="index.php"><br><b>KUMO</b> 雲 </a>
     
           <!--<div v-if="mostrarRespuesta"> 
             <p>res: {{ respuesta }}</p>
