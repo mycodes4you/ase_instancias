@@ -151,8 +151,8 @@
             </a>
             
           </li>
-          <!--<li class="nav-item <?= $menu_instancias_abierto ?>">-->
-          <li class="nav-item">
+          <li class="nav-item <?= $menu_instancias_abierto ?>">
+         <!-- <li class="nav-item">-->
             <a href="inicio.php?accion=instancias" class="nav-link <?= $menu_instancias ?>">
               <i class="nav-icon fas fa-building"></i>
               <p>
@@ -160,6 +160,14 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="inicio.php?accion=instancias" class="nav-link <?= $menu_instancias ?>">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Listado</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
 
@@ -176,16 +184,11 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="inicio.php?accion=usuarios" class="nav-link <?= $menu_usuarios ?>">
-                  <i class="fas fa-users nav-icon"></i>
-                  <p>Activos</p>
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Listado</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="inicio.php?accion=usuarios_inactivos" class="nav-link <?= $menu_usuarios_inactivos ?>">
-                  <i class="fas fa-users-slash nav-icon"></i>
-                  <p>Inactivos</p>
-                </a>
-              </li>
+             
             
             </ul>
             

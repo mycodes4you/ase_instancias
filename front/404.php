@@ -1,6 +1,6 @@
 <?php
-include('parciales/cabecera.php');
-include('parciales/menu.php');
+//include('parciales/cabecera.php');
+//include('parciales/menu.php');
 include('parciales/titulo.php');
 ?>
     <!-- Main content -->

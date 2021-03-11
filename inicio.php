@@ -207,14 +207,14 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 	}
 	else{
 		$titulo_pagina = 'Error 404';
-		include('front/423.php');
+		include('front/404.php');
 	}
 
 }
 else{
   $titulo_pagina = 'Error 404';
   $mensaje = 'NO TIENES ACCESO PERMITIDO A ESTA AREA';
-	include('front/423.php');
+	include('front/404.php');
 
 }
 ?>
