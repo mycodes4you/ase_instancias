@@ -14,34 +14,7 @@ include('parciales/titulo.php');
           <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Algo esta mal!.</h3>
 
           <p>
-          <?php
-
-          //print_r($permisos_l);
-          echo '<br>';
-    
-        
-/*
-          if($validaAcceso('100-001') == 1){
-            echo 'si';
-          }
-          else{
-            echo 'no';
-          }*/
-
-          $funnum = '100-001';
-          $retorno = $validaAcceso($funnum);
-          echo $retorno;
-         /* if($retorno == 1){
-            echo 'si';
-          }
-          else{
-            echo 'no';
-          }*/
-
-         
-          ?>
-<br>
-          NO TIENES PERMISOS PARA VISUALIZAR ESTA PAGINA
+          <?= $mensaje; ?>
           </p>
 
           <form class="search-form">
