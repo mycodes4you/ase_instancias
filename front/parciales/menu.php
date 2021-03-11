@@ -191,6 +191,62 @@
             
           </li>
 
+
+          <li class="nav-item <?= $menu_modulos_abierto ?>">
+            <a href="inicio.php?accion=modulos" class="nav-link <?= $menu_modulos ?>">
+              <i class="nav-icon fas fa-puzzle-piece"></i>
+              <p>
+                Módulos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="inicio.php?accion=modulos" class="nav-link <?= $menu_modulos ?>">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Listado</p>
+                </a>
+              </li>
+            
+            </ul>
+            
+          </li>
+
+          <li class="nav-item <?= $menu_permisos_abierto ?>">
+            <a href="inicio.php?accion=permisos" class="nav-link <?= $menu_permisos ?>">
+              <i class="nav-icon fas fa-lock"></i>
+              <p>
+                Permisos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="inicio.php?accion=permisos" class="nav-link <?= $menu_permisos ?>">
+                  <i class="fas fa-key nav-icon"></i>
+                  <p>Listado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="inicio.php?accion=permisos_dar" class="nav-link <?= $menu_permisos ?>">
+                  <i class="fas fa-unlock-alt nav-icon"></i>
+                  <p>Dar Permisos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="inicio.php?accion=permisos_ver" class="nav-link <?= $menu_permisos ?>">
+                  <i class="fas fa-user-lock nav-icon"></i>
+                  <p>Ver Asignados</p>
+                </a>
+              </li>
+
+              
+            
+            </ul>
+            
+          </li>
+
+
           <li class="nav-item">
             <a href="login.php?accion=salir" class="nav-link">
               <i class="nav-icon fas fa-door-open"></i>

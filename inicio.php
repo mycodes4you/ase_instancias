@@ -5,9 +5,8 @@ session_start(); // --- Validar sesión ---
 //error_reporting(0);
 include ('api/conexion.php');
 include ('api/funciones.php');
-
-if(validaAcceso("100-001", "1") == TRUE){
-          
+$usuario_id = $_SESSION['usuario_id'];
+if(validaAcceso("100-001", $usuario_id) == TRUE){          
           
 	// ---- Se establece la zona horarira y el lenguaje
 	date_default_timezone_set("America/Mexico_City");
@@ -28,7 +27,7 @@ if(validaAcceso("100-001", "1") == TRUE){
 	}
 
 
-	$usuario_id = $_SESSION['usuario_id'];
+	
 
 	/*$validaAcceso = function ($num_funcion) {
 		$preg0 = "SELECT po_numero, estado_permiso FROM b64_permisos_otorgados WHERE po_usuario = '".$usuario_id."'";
@@ -98,11 +97,7 @@ if(validaAcceso("100-001", "1") == TRUE){
 			include('front/instancias.php');
 			unset($_SESSION['mensajes']);
 		}
-		else{
-			$titulo_pagina = 'Error 404';
- 	 		$mensaje = 'NO TIENES ACCESO PERMITIDO A ESTA AREA';
-			include('front/423.php');
-		}
+
 		
 	}
 
@@ -180,6 +175,34 @@ if(validaAcceso("100-001", "1") == TRUE){
 		// --- BACKEND ----
 		include('front/usuarios.php');
 		unset($_SESSION['mensajes']);
+		
+	}
+	elseif($accion == 'permisos'){
+		/// --- ACCESO MODULO PERMISOS
+		if(validaAcceso("300-001", "1") == TRUE){
+			$titulo_pagina = 'Permisos';
+			// ---- Marcar la sección en el menú ---
+			$menu_permisos_t = 'active';
+			$menu_permisos_abierto = 'menu-open';
+			$menu_permisos = 'active';
+			// --- BACKEND ----
+			include('front/permisos.php');
+			unset($_SESSION['mensajes']);
+		}
+		
+	}
+	elseif($accion == 'modulos'){
+		/// --- ACCESO MODULO MODULOS
+		if(validaAcceso("400-001", "1") == TRUE){
+			$titulo_pagina = 'Módulos';
+			// ---- Marcar la sección en el menú ---
+			$menu_modulos_t = 'active';
+			$menu_modulos_abierto = 'menu-open';
+			$menu_modulos = 'active';
+			// --- BACKEND ----
+			include('front/modulos.php');
+			unset($_SESSION['mensajes']);
+		}
 		
 	}
 	else{
