@@ -113,11 +113,11 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
      return base64_encode(openssl_random_pseudo_bytes(openssl_cipher_iv_length($method)));
  };
 
- function validaAcceso($num_funcion) {
-  global $usuario_id;
+ $validaAcceso = function () use ($num_funcion) {
+ /* global $usuario_id;
   $preg0 = "SELECT po_numero, estado_permiso FROM b64_permisos_otorgados WHERE po_usuario = '".$usuario_id."'";
   $matr0 = $conexion->query($preg0) or die ('Error al consultar permisos '.$preg0);
-  $p = $matr0->fetch_array();
+  $p = $matr0->fetch_array();*/
 
   /*$query_num_ovh = "SELECT activa_instancia FROM b64_instancias WHERE servidor_instancia = 'OVH'";
   $consulta_num_ovh = $conexion->query($query_num_ovh) or die ("Falló num de instancias OVH " . $query_num_ovh);*/
@@ -135,9 +135,35 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
     $acceso = 0;
   }
   return $acceso;*/
-  $acceso = $p['po_numero'];
+  $acceso = $num_funcion;
   return $acceso;
+  };
+
+/* function validaAcceso($num_funcion) {
+ /* global $usuario_id;
+  $preg0 = "SELECT po_numero, estado_permiso FROM b64_permisos_otorgados WHERE po_usuario = '".$usuario_id."'";
+  $matr0 = $conexion->query($preg0) or die ('Error al consultar permisos '.$preg0);
+  $p = $matr0->fetch_array();*/
+
+  /*$query_num_ovh = "SELECT activa_instancia FROM b64_instancias WHERE servidor_instancia = 'OVH'";
+  $consulta_num_ovh = $conexion->query($query_num_ovh) or die ("Falló num de instancias OVH " . $query_num_ovh);*/
+
+  /*$preg1 = "SELECT permiso_modulo, permiso_numero FROM b64_permisos WHERE permiso_id = '".$p['po_numero']."'";
+  $matr1 = $conexion->query($preg1) or die ('Error al consultar permisos 2 '.$preg1);
+  $acc = $matr1->fetch_array();
+
+  $f_permiso = $acc['permiso_modulo'].'-'.$acc['permiso_numero'];
+  $e_permiso = $p['estado_permiso'];
+      
+  if($e_permiso == '1' && $f_permiso = $num_funcion) {
+    $acceso = 1;
+  } else {
+    $acceso = 0;
   }
+  return $acceso;
+  $acceso = $num_funcion;
+  return $acceso;
+  }*/
 
 
 ?>

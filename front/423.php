@@ -29,7 +29,7 @@ include('parciales/titulo.php');
           }*/
 
           $funnum = '100-001';
-          $retorno = validaAcceso($funnum);
+          $retorno = $validaAcceso($funnum);
           echo $retorno;
          /* if($retorno == 1){
             echo 'si';
