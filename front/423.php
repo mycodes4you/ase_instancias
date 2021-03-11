@@ -19,10 +19,7 @@ include('parciales/titulo.php');
           //print_r($permisos_l);
           echo '<br>';
     
-          
-if(!($con = ssh2_connect("nombre servidor", 22))){
-
-echo "No se puede iniciar una conexión SSH";}
+        
 /*
           if($validaAcceso('100-001') == 1){
             echo 'si';
