@@ -2,7 +2,7 @@
 foreach($_POST as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 foreach($_GET as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 session_start(); // --- Validar sesión ---
-error_reporting(0);
+//error_reporting(0);
 include ('api/conexion.php');
 
 // ---- Se establece la zona horarira y el lenguaje
@@ -25,35 +25,53 @@ if ($hora<12) {
 
 
 $usuario_id = $_SESSION['usuario_id'];
-$consulta_permisos = "SELECT * FROM b64_permisos_otorgados WHERE id_u_p_o = '$usuario_id' AND estado_permiso = '1'";
-$consultar_p = $conexion->query($consulta_permisos) or die ('Error al consultar permisos ' . $consulta_permisos);
-$permisos_l = [];
-while ($permisos_lista = $consultar_p->fetch_array()) {
-	$array_permisos = array($permisos_lista['numero_p_o']);
-	array_push($permisos_l, $array_permisos);
+
+/*$validaAcceso = function ($num_funcion) {
+	$preg0 = "SELECT po_numero, estado_permiso FROM b64_permisos_otorgados WHERE po_usuario = '".$usuario_id."'";
+	$matr0 = $conexion->query($preg0) or die ('Error al consultar permisos '.$preg0);
+	$p = $matr0->fetch_array();
+
+	$preg1 = "SELECT permiso_modulo, permiso_numero FROM b64_permisos WHERE permiso_id = '".$p['po_numero']."'";
+	$matr1 = $conexion->query($preg1) or die ('Error al consultar permisos 2 '.$preg1);
+	$acc = $matr1->fetch_array();
+
+	$f_permiso = $acc['permiso_modulo'].'-'.$acc['permiso_numero'];
+	$e_permiso = $p['estado_permiso'];
+			
+	if($e_permiso == '1' && $f_permiso = $num_funcion) {
+		$acceso = 1;
+	} else {
+		$acceso = 0;
+	}
+	return $acceso;
+};*/
+
+function validaAcceso($num_funcion) {
+	global $usuario_id;
+	$preg0 = "SELECT po_numero, estado_permiso FROM b64_permisos_otorgados WHERE po_usuario = '".$usuario_id."'";
+	$matr0 = $conexion->query($preg0) or die ('Error al consultar permisos '.$preg0);
+	$p = $matr0->fetch_array();
+
+	$query_num_ovh = "SELECT activa_instancia FROM b64_instancias WHERE servidor_instancia = 'OVH'";
+	$consulta_num_ovh = $conexion->query($query_num_ovh) or die ("Falló num de instancias OVH " . $query_num_ovh);
+
+	/*$preg1 = "SELECT permiso_modulo, permiso_numero FROM b64_permisos WHERE permiso_id = '".$p['po_numero']."'";
+	$matr1 = $conexion->query($preg1) or die ('Error al consultar permisos 2 '.$preg1);
+	$acc = $matr1->fetch_array();
+
+	$f_permiso = $acc['permiso_modulo'].'-'.$acc['permiso_numero'];
+	$e_permiso = $p['estado_permiso'];
+			
+	if($e_permiso == '1' && $f_permiso = $num_funcion) {
+		$acceso = 1;
+	} else {
+		$acceso = 0;
+	}
+	return $acceso;*/
+	$acceso = $p['po_numero'];
+	return $acceso;
 }
 
-$checaPermiso = function ($array, $pregunta_p){
-            foreach($array as $claves => $permisos){
-            	//echo '1 f - ' .$claves .':<br>';
-            	//print_r($permisos);
-              foreach ($permisos as $permiso) {
-               // echo $permiso .' <br>';
-               // if($pregunta_p == $permiso){
-               	if($pregunta_p == $permiso){
-                  //echo 'Tienes el Permiso '.$pregunta_p.' Activo<br>';
-                   $res_permiso = $permiso . ' PERMITIDO';
-               	
-                }
-                else{
-                  //echo 'No tienes el permiso '.$pregunta_p'<br>';
-                 
-                  $res_permiso = $permiso . ' NO PERMITIDO';
-                }
-                
-              }
-            }return $res_permiso;
-          };
 
 
 
@@ -179,7 +197,7 @@ elseif($accion == 'usuarios'){
 }
 else{
 	$titulo_pagina = 'Error 404';
-	include('front/404.php');
+	include('front/423.php');
 }
 
 ?>

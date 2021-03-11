@@ -18,11 +18,30 @@ include('parciales/titulo.php');
 
           //print_r($permisos_l);
           echo '<br>';
-          $pregunta_p = $checaPermiso($permisos_l, '1101');
-          echo $pregunta_p;
-
+    
           
+if(!($con = ssh2_connect("nombre servidor", 22))){
 
+echo "No se puede iniciar una conexión SSH";}
+/*
+          if($validaAcceso('100-001') == 1){
+            echo 'si';
+          }
+          else{
+            echo 'no';
+          }*/
+
+          $funnum = '100-001';
+          $retorno = validaAcceso($funnum);
+          echo $retorno;
+         /* if($retorno == 1){
+            echo 'si';
+          }
+          else{
+            echo 'no';
+          }*/
+
+         
           ?>
 <br>
           NO TIENES PERMISOS PARA VISUALIZAR ESTA PAGINA
