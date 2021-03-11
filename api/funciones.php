@@ -119,8 +119,8 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
   $matr0 = $conexion->query($preg0) or die ('Error al consultar permisos '.$preg0);
   $p = $matr0->fetch_array();
 
-  $query_num_ovh = "SELECT activa_instancia FROM b64_instancias WHERE servidor_instancia = 'OVH'";
-  $consulta_num_ovh = $conexion->query($query_num_ovh) or die ("Falló num de instancias OVH " . $query_num_ovh);
+  /*$query_num_ovh = "SELECT activa_instancia FROM b64_instancias WHERE servidor_instancia = 'OVH'";
+  $consulta_num_ovh = $conexion->query($query_num_ovh) or die ("Falló num de instancias OVH " . $query_num_ovh);*/
 
   /*$preg1 = "SELECT permiso_modulo, permiso_numero FROM b64_permisos WHERE permiso_id = '".$p['po_numero']."'";
   $matr1 = $conexion->query($preg1) or die ('Error al consultar permisos 2 '.$preg1);
