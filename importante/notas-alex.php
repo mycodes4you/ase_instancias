@@ -105,10 +105,20 @@ mysql pass TtzYaM8yMYB1Hpwu
 
 $comando_importar_bd_mysql = "sudo ./mysql -u autoshop -p saiRoF73 < /home/alex/Descargas/saiRoF73.sql";
 
-?>
 
 
-Jf9dkh-gfdp3G2.Codero	autoshopmgr.com
-Jf9dkh-gfdp3G2.CAOvh   carshopmgr.com
-Jf9dkh-gfdp3G2.Jupiter
-Jf9dkh-gfdp3G2.Cobre	vaicop.noip.me
+
+$Cord = 'Jf9dkh-gfdp3G2.Codero'.'autoshopmgr.com';
+$Ohv = 'Jf9dkh-gfdp3G2.CAOvh'.'carshopmgr.com';
+$Jup = 'Jf9dkh-gfdp3G2.Jupiter'.'jup2.carshopmgr.com';
+$Cobre = 'Jf9dkh-gfdp3G2.Cobre'.'vaicop.noip.me';
+
+$Prom = 'Rjf6ge.Fa';
+
+
+///////////// LIBERAR CACHE Y RAM //////////////
+
+$monitor = 'watch -n 1 free -m';
+$paso1 = 'sudo sync0';
+$paso2 = 'sudo sysctl -w vm.drop_caches=3';
+$paso3 = 'sudo sync';
