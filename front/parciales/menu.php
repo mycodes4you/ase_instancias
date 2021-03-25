@@ -151,8 +151,8 @@
             </a>
             
           </li>
-          <!--<li class="nav-item <?= $menu_instancias_abierto ?>">-->
-          <li class="nav-item">
+          <li class="nav-item <?= $menu_instancias_abierto ?>">
+         <!-- <li class="nav-item">-->
             <a href="inicio.php?accion=instancias" class="nav-link <?= $menu_instancias ?>">
               <i class="nav-icon fas fa-building"></i>
               <p>
@@ -160,6 +160,14 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="inicio.php?accion=instancias" class="nav-link <?= $menu_instancias ?>">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Listado</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
 
@@ -176,20 +184,71 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="inicio.php?accion=usuarios" class="nav-link <?= $menu_usuarios ?>">
-                  <i class="fas fa-users nav-icon"></i>
-                  <p>Activos</p>
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Listado</p>
                 </a>
               </li>
+             
+            
+            </ul>
+            
+          </li>
+
+
+          <li class="nav-item <?= $menu_modulos_abierto ?>">
+            <a href="inicio.php?accion=modulos" class="nav-link <?= $menu_modulos ?>">
+              <i class="nav-icon fas fa-puzzle-piece"></i>
+              <p>
+                Módulos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="inicio.php?accion=usuarios_inactivos" class="nav-link <?= $menu_usuarios_inactivos ?>">
-                  <i class="fas fa-users-slash nav-icon"></i>
-                  <p>Inactivos</p>
+                <a href="inicio.php?accion=modulos" class="nav-link <?= $menu_modulos ?>">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Listado</p>
                 </a>
               </li>
             
             </ul>
             
           </li>
+
+          <li class="nav-item <?= $menu_permisos_abierto ?>">
+            <a href="inicio.php?accion=permisos" class="nav-link <?= $menu_permisos ?>">
+              <i class="nav-icon fas fa-lock"></i>
+              <p>
+                Permisos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="inicio.php?accion=permisos" class="nav-link <?= $menu_permisos ?>">
+                  <i class="fas fa-key nav-icon"></i>
+                  <p>Listado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="inicio.php?accion=permisos_dar" class="nav-link <?= $menu_permisos ?>">
+                  <i class="fas fa-unlock-alt nav-icon"></i>
+                  <p>Dar Permisos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="inicio.php?accion=permisos_ver" class="nav-link <?= $menu_permisos ?>">
+                  <i class="fas fa-user-lock nav-icon"></i>
+                  <p>Ver Asignados</p>
+                </a>
+              </li>
+
+              
+            
+            </ul>
+            
+          </li>
+
 
           <li class="nav-item">
             <a href="login.php?accion=salir" class="nav-link">

@@ -2,184 +2,219 @@
 foreach($_POST as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 foreach($_GET as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';
 session_start(); // --- Validar sesión ---
-error_reporting(0);
+//error_reporting(0);
 include ('api/conexion.php');
-
-// ---- Se establece la zona horarira y el lenguaje
-date_default_timezone_set("America/Mexico_City");
-setlocale(LC_ALL , 'es_ES.UTF-8');
-
-// ---- Hora actual
-$hora_actual = strftime("%A, %e $de %B $de %Y %R");
-
-// ---- Saludo de acuerdo a la hora del día
-$today = getdate();
-$hora=$today["hours"];
-if ($hora<12) {
-	$saludo = '<i class="fas fa-sun fa-lg" style="color: #ffef00; text-shadow: 0 0 5px #000;"></i> Buenos días bienvenid@ a Instancias Autoshop-Easy by KUMO';
-}elseif($hora<19){
-	$saludo = '<i class="fas fa-cloud-sun fa-lg" style="color: #faff50; text-shadow: 0 0 5px #000;"></i> Buenas tardes bienvenid@ a Instancias Autoshop-Easy by KUMO';
-}else{ 
-	$saludo = '<i class="fas fa-moon fa-lg" style="color: blue; text-shadow: 0 0 5px #000;"></i> Buenas Noches bienvenid@ a Instancias Autoshop-Easy by KUMO'; 
-}
-
-
+include ('api/funciones.php');
 $usuario_id = $_SESSION['usuario_id'];
-$consulta_permisos = "SELECT * FROM b64_permisos_otorgados WHERE id_u_p_o = '$usuario_id' AND estado_permiso = '1'";
-$consultar_p = $conexion->query($consulta_permisos) or die ('Error al consultar permisos ' . $consulta_permisos);
-$permisos_l = [];
-while ($permisos_lista = $consultar_p->fetch_array()) {
-	$array_permisos = array($permisos_lista['numero_p_o']);
-	array_push($permisos_l, $array_permisos);
-}
+if(validaAcceso("100-001", $usuario_id) == TRUE){          
+          
+	// ---- Se establece la zona horarira y el lenguaje
+	date_default_timezone_set("America/Mexico_City");
+	setlocale(LC_ALL , 'es_ES.UTF-8');
 
-$checaPermiso = function ($array, $pregunta_p){
-            foreach($array as $claves => $permisos){
-            	//echo '1 f - ' .$claves .':<br>';
-            	//print_r($permisos);
-              foreach ($permisos as $permiso) {
-               // echo $permiso .' <br>';
-               // if($pregunta_p == $permiso){
-               	if($pregunta_p == $permiso){
-                  //echo 'Tienes el Permiso '.$pregunta_p.' Activo<br>';
-                   $res_permiso = $permiso . ' PERMITIDO';
-               	
-                }
-                else{
-                  //echo 'No tienes el permiso '.$pregunta_p'<br>';
-                 
-                  $res_permiso = $permiso . ' NO PERMITIDO';
-                }
-                
-              }
-            }return $res_permiso;
-          };
+	// ---- Hora actual
+	$hora_actual = strftime("%A, %e $de %B $de %Y %R");
+
+	// ---- Saludo de acuerdo a la hora del día
+	$today = getdate();
+	$hora=$today["hours"];
+	if ($hora<12) {
+		$saludo = '<i class="fas fa-sun fa-lg" style="color: #ffef00; text-shadow: 0 0 5px #000;"></i> Buenos días bienvenid@ a Instancias Autoshop-Easy by KUMO';
+	}elseif($hora<19){
+		$saludo = '<i class="fas fa-cloud-sun fa-lg" style="color: #faff50; text-shadow: 0 0 5px #000;"></i> Buenas tardes bienvenid@ a Instancias Autoshop-Easy by KUMO';
+	}else{ 
+		$saludo = '<i class="fas fa-moon fa-lg" style="color: blue; text-shadow: 0 0 5px #000;"></i> Buenas Noches bienvenid@ a Instancias Autoshop-Easy by KUMO'; 
+	}
 
 
+	
 
-// --- URL para axios
-$url_axios = $_SERVER['HTTP_HOST'];
-//$url_axios = "https://atom-rm.com/control/";
+	/*$validaAcceso = function ($num_funcion) {
+		$preg0 = "SELECT po_numero, estado_permiso FROM b64_permisos_otorgados WHERE po_usuario = '".$usuario_id."'";
+		$matr0 = $conexion->query($preg0) or die ('Error al consultar permisos '.$preg0);
+		$p = $matr0->fetch_array();
+
+		$preg1 = "SELECT permiso_modulo, permiso_numero FROM b64_permisos WHERE permiso_id = '".$p['po_numero']."'";
+		$matr1 = $conexion->query($preg1) or die ('Error al consultar permisos 2 '.$preg1);
+		$acc = $matr1->fetch_array();
+
+		$f_permiso = $acc['permiso_modulo'].'-'.$acc['permiso_numero'];
+		$e_permiso = $p['estado_permiso'];
+				
+		if($e_permiso == '1' && $f_permiso = $num_funcion) {
+			$acceso = 1;
+		} else {
+			$acceso = 0;
+		}
+		return $acceso;
+	};*/
 
 
-if(!isset($_SESSION['usr'])){
-	header("location:login.php?accion=entrar"); // --- redirigir a login si no hay sesión ---
-}
 
-if($accion == 'dashboard'){
-	
-	$titulo_pagina = 'Dashboard';
-	// ---- Marcar la sección en el menú ---
-	$menu_dashboard = 'active';
-	// --- BACKEND ----
-	include('front/dashboard.php');
-	unset($_SESSION['mensajes']);
-	
-}
 
-elseif($accion == 'cuenta'){
-	
-	$titulo_pagina = 'Cuenta';
-	// ---- Marcar la sección en el menú ---
-	$menu_cuenta = 'active';
-	// --- BACKEND ----
-	include('front/cuenta.php');
-	unset($_SESSION['mensajes']);
-	
-}
 
-elseif($accion == 'instancias'){
-	
-	$titulo_pagina = 'Instancias';
-	// ---- Marcar la sección en el menú ---
-	$menu_instancias_abierto = 'menu-open';
-	$menu_todas = 'active';
-	$menu_instancias = 'active';
-	// --- BACKEND ----
-	include('front/instancias.php');
-	unset($_SESSION['mensajes']);
-	
-}
 
-elseif($accion == 'instancias_activas'){
-	
-	$titulo_pagina = 'Instancias Activas';
-	// ---- Marcar la sección en el menú ---
-	$menu_instancias_activas = 'active';
-	$menu_instancias_abierto = 'menu-open';
-	$menu_instancias = 'active';
-	// --- BACKEND ----
-	include('front/instancias_activas.php');
-	unset($_SESSION['mensajes']);
-	
-}
+	// --- URL para axios
+	$url_axios = $_SERVER['HTTP_HOST'];
+	//$url_axios = "https://atom-rm.com/control/";
 
-elseif($accion == 'instancias_inactivas'){
-	
-	$titulo_pagina = 'Instancias Inactivas';
-	// ---- Marcar la sección en el menú ---
-	$menu_instancias_inactivas = 'active';
-	$menu_instancias_abierto = 'menu-open';
-	$menu_instancias = 'active';
-	// --- BACKEND ----
-	include('front/instancias_inactivas.php');
-	unset($_SESSION['mensajes']);
-	
-}
 
-elseif($accion == 'instancias_codero'){
-	
-	$titulo_pagina = 'Instancias en servidor Codero';
-	// ---- Marcar la sección en el menú ---
-	$menu_instancias_codero = 'active';
-	$menu_instancias_abierto = 'menu-open';
-	$menu_instancias = 'active';
-	// --- BACKEND ----
-	include('front/instancias_codero.php');
-	unset($_SESSION['mensajes']);
-	
-}
+	if(!isset($_SESSION['usr'])){
+		header("location:login.php?accion=entrar"); // --- redirigir a login si no hay sesión ---
+	}
 
-elseif($accion == 'instancias_ovh'){
-	
-	$titulo_pagina = 'Instancias en servidor OVH';
-	// ---- Marcar la sección en el menú ---
-	$menu_instancias_ovh = 'active';
-	$menu_instancias_abierto = 'menu-open';
-	$menu_instancias = 'active';
-	// --- BACKEND ----
-	include('front/instancias_ovh.php');
-	unset($_SESSION['mensajes']);
-	
-}
+	if($accion == 'dashboard'){
+		
+		$titulo_pagina = 'Dashboard';
+		// ---- Marcar la sección en el menú ---
+		$menu_dashboard = 'active';
+		// --- BACKEND ----
+		include('front/dashboard.php');
+		unset($_SESSION['mensajes']);
+		
+	}
 
-elseif($accion == 'instancias_jupiter'){
-	
-	$titulo_pagina = 'Instancias en servidor Jupiter';
-	// ---- Marcar la sección en el menú ---
-	$menu_instancias_jupiter = 'active';
-	$menu_instancias_abierto = 'menu-open';
-	$menu_instancias = 'active';
-	// --- BACKEND ----
-	include('front/instancias_jupiter.php');
-	unset($_SESSION['mensajes']);
-	
-}
-elseif($accion == 'usuarios'){
-	
-	$titulo_pagina = 'Usuarios';
-	// ---- Marcar la sección en el menú ---
-	$menu_usuarios_t = 'active';
-	$menu_usuarios_abierto = 'menu-open';
-	$menu_usuarios = 'active';
-	// --- BACKEND ----
-	include('front/usuarios.php');
-	unset($_SESSION['mensajes']);
-	
+	elseif($accion == 'cuenta'){
+		
+		$titulo_pagina = 'Cuenta';
+		// ---- Marcar la sección en el menú ---
+		$menu_cuenta = 'active';
+		// --- BACKEND ----
+		include('front/cuenta.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+
+	elseif($accion == 'instancias'){
+		if(validaAcceso("200-001", "1") == TRUE){
+
+			$titulo_pagina = 'Instancias';
+			// ---- Marcar la sección en el menú ---
+			$menu_instancias_abierto = 'menu-open';
+			$menu_todas = 'active';
+			$menu_instancias = 'active';
+			// --- BACKEND ----
+			include('front/instancias.php');
+			unset($_SESSION['mensajes']);
+		}
+
+		
+	}
+
+	elseif($accion == 'instancias_activas'){
+		
+		$titulo_pagina = 'Instancias Activas';
+		// ---- Marcar la sección en el menú ---
+		$menu_instancias_activas = 'active';
+		$menu_instancias_abierto = 'menu-open';
+		$menu_instancias = 'active';
+		// --- BACKEND ----
+		include('front/instancias_activas.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+
+	elseif($accion == 'instancias_inactivas'){
+		
+		$titulo_pagina = 'Instancias Inactivas';
+		// ---- Marcar la sección en el menú ---
+		$menu_instancias_inactivas = 'active';
+		$menu_instancias_abierto = 'menu-open';
+		$menu_instancias = 'active';
+		// --- BACKEND ----
+		include('front/instancias_inactivas.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+
+	elseif($accion == 'instancias_codero'){
+		
+		$titulo_pagina = 'Instancias en servidor Codero';
+		// ---- Marcar la sección en el menú ---
+		$menu_instancias_codero = 'active';
+		$menu_instancias_abierto = 'menu-open';
+		$menu_instancias = 'active';
+		// --- BACKEND ----
+		include('front/instancias_codero.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+
+	elseif($accion == 'instancias_ovh'){
+		
+		$titulo_pagina = 'Instancias en servidor OVH';
+		// ---- Marcar la sección en el menú ---
+		$menu_instancias_ovh = 'active';
+		$menu_instancias_abierto = 'menu-open';
+		$menu_instancias = 'active';
+		// --- BACKEND ----
+		include('front/instancias_ovh.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+
+	elseif($accion == 'instancias_jupiter'){
+		
+		$titulo_pagina = 'Instancias en servidor Jupiter';
+		// ---- Marcar la sección en el menú ---
+		$menu_instancias_jupiter = 'active';
+		$menu_instancias_abierto = 'menu-open';
+		$menu_instancias = 'active';
+		// --- BACKEND ----
+		include('front/instancias_jupiter.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+	elseif($accion == 'usuarios'){
+		
+		$titulo_pagina = 'Usuarios';
+		// ---- Marcar la sección en el menú ---
+		$menu_usuarios_t = 'active';
+		$menu_usuarios_abierto = 'menu-open';
+		$menu_usuarios = 'active';
+		// --- BACKEND ----
+		include('front/usuarios.php');
+		unset($_SESSION['mensajes']);
+		
+	}
+	elseif($accion == 'permisos'){
+		/// --- ACCESO MODULO PERMISOS
+		if(validaAcceso("300-001", "1") == TRUE){
+			$titulo_pagina = 'Permisos';
+			// ---- Marcar la sección en el menú ---
+			$menu_permisos_t = 'active';
+			$menu_permisos_abierto = 'menu-open';
+			$menu_permisos = 'active';
+			// --- BACKEND ----
+			include('front/permisos.php');
+			unset($_SESSION['mensajes']);
+		}
+		
+	}
+	elseif($accion == 'modulos'){
+		/// --- ACCESO MODULO MODULOS
+		if(validaAcceso("400-001", "1") == TRUE){
+			$titulo_pagina = 'Módulos';
+			// ---- Marcar la sección en el menú ---
+			$menu_modulos_t = 'active';
+			$menu_modulos_abierto = 'menu-open';
+			$menu_modulos = 'active';
+			// --- BACKEND ----
+			include('front/modulos.php');
+			unset($_SESSION['mensajes']);
+		}
+		
+	}
+	else{
+		$titulo_pagina = 'Error 404';
+		include('front/404.php');
+	}
+
 }
 else{
-	$titulo_pagina = 'Error 404';
+  $titulo_pagina = 'Error 404';
+  $mensaje = 'NO TIENES ACCESO PERMITIDO A ESTA AREA';
 	include('front/404.php');
-}
 
+}
 ?>

@@ -1,5 +1,33 @@
 <?php
+//include('conexion.php');
+function validaAcceso($funnum, $usr) {
+  global $conexion;
+  $parte = explode('-', $funnum);
+  $modulo = $parte[0];
+  $numero = $parte[1];
 
+  $query_permisos = "SELECT * FROM b64_permisos WHERE permiso_modulo = '".$modulo."' AND permiso_numero = '".$numero."' ";
+  $consulta_permisos = $conexion->query($query_permisos) or die ("Falló listado de usuarios" . $query_permisos);
+  $p = $consulta_permisos->fetch_array();
+
+  $query_po = "SELECT * FROM b64_permisos_otorgados WHERE po_usuario = '".$usr."' AND po_numero = '".$p['permiso_id']."' ";
+  $consulta_po = $conexion->query($query_po) or die ("Falló listado de usuarios" . $query_po);
+  $po = $consulta_po->fetch_array();
+
+  $permiso = $p['permiso_modulo'].'-'.$p['permiso_numero'];
+
+  if($permiso == $funnum && $po['estado_permiso'] == 1){
+    $res = TRUE;
+  }
+  else{
+    $res = FALSE;
+  }
+  return $res;
+}
+
+function mostrarTexto($texto) {
+  return $texto;
+}
 
 function ejecutar_db($table, $data, $action, $parameters) {
     
@@ -112,7 +140,6 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
  $getIV = function () use ($method) {
      return base64_encode(openssl_random_pseudo_bytes(openssl_cipher_iv_length($method)));
  };
-
 
 ?>
 

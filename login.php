@@ -12,7 +12,7 @@ if($accion == 'salir'){
 
 if(isset($_SESSION['usr'])){ // ---- sesión iniciada, redirigir a index ----
 
-	header("location: inicio.php?accion=dashboard");
+	header("location: index.php");
 
 }
 

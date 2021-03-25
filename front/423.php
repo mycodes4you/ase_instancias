@@ -14,18 +14,7 @@ include('parciales/titulo.php');
           <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Algo esta mal!.</h3>
 
           <p>
-          <?php
-
-          //print_r($permisos_l);
-          echo '<br>';
-          $pregunta_p = $checaPermiso($permisos_l, '1101');
-          echo $pregunta_p;
-
-          
-
-          ?>
-<br>
-          NO TIENES PERMISOS PARA VISUALIZAR ESTA PAGINA
+          <?= $mensaje; ?>
           </p>
 
           <form class="search-form">
