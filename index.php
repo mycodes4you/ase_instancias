@@ -14,6 +14,7 @@
 		header("location:inicio.php?accion=dashboard"); // --- redirigir si hay sesión ---
 			
 	}
+	
 
 
 ?>
