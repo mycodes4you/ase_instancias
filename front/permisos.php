@@ -53,9 +53,9 @@ include('parciales/titulo.php');
               <i class="fas fa-users-slash"></i> Inactivos
             </a>
           -->
-            <?php if(validaAcceso("300-002", $usuario_id) == TRUE){ /// --- Agregar PErmisos?>
+            <?php //if(validaAcceso("300-002", $usuario_id) == TRUE){ /// --- Agregar PErmisos?>
               <button type="button" data-toggle="modal" data-target="#modal-nuevo" class="btn bg-gradient-success btn-app" @click="app.showingaddModal = true;"><i class="fas fa-key"></i> Agregar Permiso</button>
-            <?php } ?>
+            <?php //} ?>
 
 
           </div>
@@ -108,9 +108,9 @@ include('parciales/titulo.php');
                         {{permiso.permiso_numero}}
                       </td>
                       <td>
-                        <?php if(validaAcceso("300-003", $usuario_id) == TRUE){ /// --- Editar Permisos ?>
+                        <?php //if(validaAcceso("300-003", $usuario_id) == TRUE){ /// --- Editar Permisos ?>
                           <button type="button" data-toggle="modal" data-target="#modal-permiso" class="btn btn-block bg-gradient-warning btn-xs" @click="showingeditModal = true; selectPermiso(permiso);"><i class="fas fa-edit"></i></button>
-                        <?php } ?>
+                        <?php //} ?>
                       </td>
                     </tr>
                   </tbody>

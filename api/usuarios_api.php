@@ -1,4 +1,4 @@
-<?php
+<?php 
 include 'conexion.php';
 include 'funciones.php';
 foreach($_POST as $k => $v){$$k=$v;} // echo $k.' -> '.$v.' | ';

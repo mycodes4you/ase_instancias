@@ -6,7 +6,7 @@ session_start(); // --- Validar sesión ---
 include ('api/conexion.php');
 include ('api/funciones.php');
 $usuario_id = $_SESSION['usuario_id'];
-if(validaAcceso("100-001", $usuario_id) == TRUE){          
+//if(validaAcceso("100-001", $usuario_id) == TRUE){          
           
 	// ---- Se establece la zona horarira y el lenguaje
 	date_default_timezone_set("America/Mexico_City");
@@ -86,7 +86,7 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 	}
 
 	elseif($accion == 'instancias'){
-		if(validaAcceso("200-001", "1") == TRUE){
+		//if(validaAcceso("200-001", "1") == TRUE){
 
 			$titulo_pagina = 'Instancias';
 			// ---- Marcar la sección en el menú ---
@@ -96,7 +96,7 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 			// --- BACKEND ----
 			include('front/instancias.php');
 			unset($_SESSION['mensajes']);
-		}
+		//}
 
 		
 	}
@@ -179,7 +179,7 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 	}
 	elseif($accion == 'permisos'){
 		/// --- ACCESO MODULO PERMISOS
-		if(validaAcceso("300-001", "1") == TRUE){
+		//if(validaAcceso("300-001", "1") == TRUE){
 			$titulo_pagina = 'Permisos';
 			// ---- Marcar la sección en el menú ---
 			$menu_permisos_t = 'active';
@@ -188,12 +188,12 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 			// --- BACKEND ----
 			include('front/permisos.php');
 			unset($_SESSION['mensajes']);
-		}
+		//}
 		
 	}
 	elseif($accion == 'modulos'){
 		/// --- ACCESO MODULO MODULOS
-		if(validaAcceso("400-001", "1") == TRUE){
+		//if(validaAcceso("400-001", "1") == TRUE){
 			$titulo_pagina = 'Módulos';
 			// ---- Marcar la sección en el menú ---
 			$menu_modulos_t = 'active';
@@ -202,7 +202,7 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 			// --- BACKEND ----
 			include('front/modulos.php');
 			unset($_SESSION['mensajes']);
-		}
+		//}
 		
 	}
 	else{
@@ -210,11 +210,12 @@ if(validaAcceso("100-001", $usuario_id) == TRUE){
 		include('front/404.php');
 	}
 
-}
+//}
+/*
 else{
   $titulo_pagina = 'Error 404';
   $mensaje = 'NO TIENES ACCESO PERMITIDO A ESTA AREA';
 	include('front/404.php');
 
-}
+}*/
 ?>

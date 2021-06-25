@@ -53,9 +53,9 @@ include('parciales/titulo.php');
               <i class="fas fa-users-slash"></i> Inactivos
             </a>
           -->
-            <?php if(validaAcceso("400-002", $usuario_id) == TRUE){ /// --- Agregar Modulo?>
+            <?php //if(validaAcceso("400-002", $usuario_id) == TRUE){ /// --- Agregar Modulo?>
               <button type="button" data-toggle="modal" data-target="#modal-nuevo" class="btn bg-gradient-success btn-app" @click="app.showingaddModal = true;"><i class="fas fa-puzzle-piece"></i> Agregar Modulo</button>
-            <?php } ?>
+            <?php //} ?>
 
 
           </div>
@@ -114,9 +114,9 @@ include('parciales/titulo.php');
                         </div>
                       </td>
                       <td>
-                        <?php if(validaAcceso("400-003", $usuario_id) == TRUE){ /// --- Editar Modulo ?>
+                        <?php //if(validaAcceso("400-003", $usuario_id) == TRUE){ /// --- Editar Modulo ?>
                           <button type="button" data-toggle="modal" data-target="#modal-modulo" class="btn btn-block bg-gradient-warning btn-xs" @click="showingeditModal = true; selectEstado(modulo);"><i class="fas fa-edit"></i></button>
-                        <?php } ?>
+                        <?php //} ?>
                       </td>
                     </tr>
                   </tbody>

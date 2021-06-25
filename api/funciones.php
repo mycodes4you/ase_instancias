@@ -1,6 +1,6 @@
 <?php
 //include('conexion.php');
-function validaAcceso($funnum, $usr) {
+function validaAcceso($funnum, $usr) {/*
   global $conexion;
   $parte = explode('-', $funnum);
   $modulo = $parte[0];
@@ -22,7 +22,7 @@ function validaAcceso($funnum, $usr) {
   else{
     $res = FALSE;
   }
-  return $res;
+  return $res;*/
 }
 
 function mostrarTexto($texto) {
